@@ -71,9 +71,9 @@ function Create-UseCasesDirectory {
     param (
         [string]$dirPath
     )
-    $dirPath = ($dirPath.Substring(0,1).ToLower()) + ($dirPath.Substring(1))
-    if (-not (Test-Path -Path $dirPath)) {
-        New-Item -Path $dirPath -ItemType Directory
+    $kebabCaseName = ConvertTo-KebabCase $dirPath
+    if (-not (Test-Path -Path $kebabCaseName)) {
+        New-Item -Path $kebabCaseName -ItemType Directory
     }
 }
 
@@ -169,7 +169,7 @@ try {
         $returnType = $methodMatch.Groups[3].Value -replace 'Promise<Promise<(.+?)>>', 'Promise<$1>'
 
         # Name of the use-case file
-        $fileName = "$useCasesDir\$($methodName)-$(ConvertTo-KebabCase $entityName).use-case.ts"
+        $fileName = "$useCasesDir\$(ConvertTo-KebabCase $methodName)-$(ConvertTo-KebabCase $entityName).use-case.ts"
 
         # Generate the content for the use-case file
         $fileContent = Generate-FileContent -entityName $entityName -methodName $methodName -parameters $parameters -returnType $returnType
