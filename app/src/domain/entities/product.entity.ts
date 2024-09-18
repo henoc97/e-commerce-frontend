@@ -6,7 +6,7 @@ import { ProductImage } from './product-image.entity';
 import { ProductVariant } from './product-variant.entity';
 import { CartItem } from './cart-item.entity';
 import { Review } from './review.entity';
-import { OrderItem } from './order-item.enttity';
+import { OrderItem } from './order-item.entity';
 
 /**
  * Represents a product entity in the system.

@@ -1,0 +1,22 @@
+import { SubscriptionService } from '../../services/subscription.service';
+import { Subscription } from '../../../domain/entities/subscription.entity';
+
+/**
+ * Use case class for create.
+ * This class encapsulates the business logic for create.
+ * It interacts with the Subscription service to perform operations on the subscription repository.
+ */
+export class CreateSubscription {
+    constructor(private readonly service: SubscriptionService) {}
+
+    /**
+     * Execute the create use case.
+     * @param subscription - The Subscription required by the service method.
+     * @returns A promise with the service result of type Promise<Subscription>.
+     */
+    async execute(subscription: Subscription): Promise<Subscription> {
+        const result = await this.service.create(subscription);
+
+        return result;
+    }
+}

@@ -3,7 +3,7 @@ import { Shop } from './shop.entity';
 import { OrderStatus } from '../enums/order-status.enum';
 import { Payment } from './payment.entity';
 import { Refund } from './refund.entity';
-import { OrderItem } from './order-item.enttity';
+import { OrderItem } from './order-item.entity';
 import { Shipment } from './shippement.entity';
 import { ShippingMethod } from '../enums/shipping-method.enum';
 

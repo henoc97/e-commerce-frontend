@@ -1,4 +1,4 @@
-import { OrderItem } from '../entities/order-item.enttity';
+import { OrderItem } from '../entities/order-item.entity';
 
 /**
  * Repository interface for managing OrderItems.

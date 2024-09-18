@@ -46,7 +46,7 @@ export interface IRefundRepository {
    * @param refund - The refund to check.
    * @returns True if the refund is eligible, false otherwise.
    */
-  isEligible(refund: Refund): boolean;
+  isEligible(refund: Refund): Promise<boolean>;
 
   /**
    * Processes a refund by updating its status.
