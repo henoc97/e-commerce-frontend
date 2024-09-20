@@ -18,3 +18,20 @@ foreach ($file in $serviceFiles) {
 
     & $scriptPath -serviceFilePath $servicePath
 }
+
+
+"import { configureStore } from '@reduxjs/toolkit';
+import productReducer from './productSlice'; // Le reducer des produits
+
+const store = configureStore({
+  reducer: {
+    products: productReducer, // Ajoute le reducer des produits
+  },
+});
+
+// Types pour dispatch et state
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+
+export default store;
+"

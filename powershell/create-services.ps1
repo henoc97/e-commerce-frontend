@@ -24,7 +24,7 @@ param (
     [string]$RepositoryInterfacePath    # Path to the repository interface file
 )
 
-# New ConvertTo-KebabCase function
+# ConvertTo-KebabCase function to convert PascalCase to kebab-case
 function ConvertTo-KebabCase {
     param (
         [string]$Name
@@ -82,74 +82,119 @@ function Get-RepositoryMethods {
 
 # Creates the service class content with method signatures and types
 function Create-ServiceClassContent {
-  param (
-      [string]$ClassName,           # Name of the service class (e.g., AddressService)
-      [string]$RepositoryName,      # PascalCase name of the repository and Entity (e.g., Address)
-      [array]$Methods               # Array of methods with their parameters and return types
-  )
-  $RepositoryVAR = ($RepositoryName.Substring(0,1).ToLower()) + ($RepositoryName.Substring(1))
-  $methodsContent = ""
-  foreach ($method in $Methods) {
-      # Convert method name to camelCase for the service method
-      $methodName = $method.Name.Substring(0, 1).ToLower() + $method.Name.Substring(1)
-      $parameters = $method.Parameters
-      $returnType = $method.ReturnType
+    param (
+        [string]$ClassName,           # Name of the service class (e.g., AddressService)
+        [string]$RepositoryName,      # PascalCase name of the repository and Entity (e.g., Address)
+        [array]$Methods               # Array of methods with their parameters and return types
+    )
 
-      # Start method documentation
-      $methodDoc = @"
+    $RepositoryVAR = ($RepositoryName.Substring(0, 1).ToLower()) + ($RepositoryName.Substring(1))
+    $methodsContent = ""
+    $addImports = ""
+    $addImportsList = @()
+
+    foreach ($method in $Methods) {
+        # Convert method name to camelCase for the service method
+        $methodName = $method.Name.Substring(0, 1).ToLower() + $method.Name.Substring(1)
+        $parameters = $method.Parameters
+        $returnType = $method.ReturnType
+
+        if ($returnType -notmatch $RepositoryName) {
+            $formattedReturnType = $returnType -replace '.*<([\w]+).*|([\w]+)\s*\|.*', '$1$2'
+            if ([char]::IsUpper($formattedReturnType[0])) {
+                $importStatement = "import { $($formattedReturnType) } from '../../domain/entities/$(ConvertTo-KebabCase $formattedReturnType).entity';"
+                # Add import only if it doesn't already exist
+                if ($addImportsList -notcontains $importStatement) {
+                    $addImportsList += $importStatement
+                }
+            }
+        }
+
+        # Start method documentation
+        $methodDoc = @"
 /**
 * Service method for $methodName.
 * Calls the repository's $methodName method.`r`n
 "@
 
-      # Loop over each parameter to add individual @param lines
-      $paramLines = $parameters -split ',\s*'
-      foreach ($param in $paramLines) {
-          if ($param -match '(\w+)\s*:\s*(\w+)') {
-              $paramName = $matches[1]
-              $paramType = $matches[2]
+        # Loop over each parameter to add individual @param lines
+        $paramLines = $parameters -split ',\s*'
 
-              $methodDoc += @"
+        foreach ($param in $paramLines) {
+            if ($param -match '(\w+)\s*:\s*(\w+)') {
+                $paramName = $matches[1]
+                $paramType = $matches[2]
+
+                try {
+                    # Check if the first character is uppercase
+                    if ([char]::IsUpper($paramType[0]) -and
+                        $paramType -notmatch [regex]::Escape($RepositoryName) -and
+                        $paramType -notmatch 'Date' -and
+                        $paramType -notmatch 'Partial') {
+
+                        # Add import if the type is an entity (like `Entity` or `Promise<Entity>`)
+                        $paramTypeKebab = ConvertTo-KebabCase $paramType -replace '<.*>', '' # Remove generics
+                        $importStatement = "import { $($paramType) } from '../../domain/entities/$paramTypeKebab.entity';"
+
+                        # Add import only if it doesn't already exist
+                        if ($addImportsList -notcontains $importStatement) {
+                            $addImportsList += $importStatement
+                        }
+                    }
+                } catch {
+                    Write-Host "Error processing parameter '$param': $($_.Exception.Message)"
+                }
+
+                $methodDoc += @"
 * @param $paramName - The $paramType required by the repository method.`r`n
 "@
-          }
-      }
+            }
+        }
 
-      # Add @returns line with extra newline for better formatting
-      $methodDoc += @"
+        # Add @returns line with extra newline for better formatting
+        $methodDoc += @"
 * @returns $returnType - The result from the repository method.
 */
 "@
 
-      # Generate the method definition with proper indentation
-      $formattedParameters = ($parameters -replace ':\s*\w+', '' -replace '<[^>]*>', '' -replace '\[\]', '' -replace '\{\}', '').Trim()
-      $methodContent = @"
+        $addImports = [string]::Join("`r`n", $addImportsList)
+
+        # Generate the method definition with proper indentation
+        $formattedParameters = ($parameters -replace ':\s*\w+', '' -replace '<[^>]*>', '' -replace '\[\]', '' -replace '\{\}', '').Trim()
+        $methodContent = @"
 public async $methodName($parameters): $returnType {
-  return await this.$($RepositoryVAR)Repository.$methodName($formattedParameters);
+  return await this.${RepositoryVAR}Repository.$methodName($formattedParameters);
 }`r`n
 "@
 
-      # Combine documentation and method content
-      $methodsContent += $methodDoc + "`r`n" + $methodContent + "`r`n"
-  }
+        # Combine documentation and method content
+        $methodsContent += $methodDoc + "`r`n" + $methodContent + "`r`n"
+    }
 
-  return @"
-import { I$($RepositoryName)Repository } from '../../domain/repositories/$(ConvertTo-KebabCase $RepositoryName).repository';
-import { $($RepositoryName) } from '../../domain/entities/$(ConvertTo-KebabCase $RepositoryName).entity';
+    # Return the final service class content
+    return @"
+import { injectable, inject } from 'tsyringe';
+import type { I${RepositoryName}Repository } from '../../domain/repositories/$(ConvertTo-KebabCase $RepositoryName).repository';
+import { I${RepositoryName}RepositoryToken } from '../../infrastructure/repositories/config/tokens';
+import { ${RepositoryName} } from '../../domain/entities/$(ConvertTo-KebabCase $RepositoryName).entity';
+$addImports
 
 /**
 * Service class for handling $RepositoryName-related operations.
 * It provides methods that call the underlying repository.
 */
+@injectable()
 export class $ClassName {
 
   /**
    * Constructor for $ClassName.
    * Injects the repository dependency.
    *
-   * @param $($RepositoryVAR)Repository - The repository that handles $RepositoryName data operations.
+   * @param ${RepositoryVAR}Repository - The repository that handles $RepositoryName data operations.
    */
-  constructor(private readonly $($RepositoryVAR)Repository: I$($RepositoryName)Repository) {  }
+   constructor(
+    @inject(I${RepositoryName}RepositoryToken) private readonly ${RepositoryVAR}Repository: I${RepositoryName}Repository
+    ) {  }
 
   $methodsContent
 }

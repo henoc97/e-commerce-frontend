@@ -115,6 +115,7 @@ function Generate-FileContent {
     }
 
     return @"
+import { injectable } from 'tsyringe';
 import { $($entityName)Service } from '../../services/$(ConvertTo-KebabCase $entityName).service';
 $importEntity
 
@@ -123,6 +124,7 @@ $importEntity
  * This class encapsulates the business logic for $($methodName).
  * It interacts with the $($entityName) service to perform operations on the $($entityName.ToLower()) repository.
  */
+@injectable()
 export class $($methodName.Substring(0, 1).ToUpper())$($methodName.Substring(1))$($entityName) {
     constructor(private readonly service: $($entityName)Service) {}
 
