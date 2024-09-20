@@ -1,11 +1,13 @@
 import { UserService } from '../../services/user.service';
 import { User } from '../../../domain/entities/user.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getById.
  * This class encapsulates the business logic for getById.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class GetByIdUser {
     constructor(private readonly service: UserService) {}
 

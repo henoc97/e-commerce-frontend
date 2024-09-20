@@ -1,4 +1,6 @@
-import { IMarketplaceRepository } from '../../domain/repositories/marketplace.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IMarketplaceRepository } from '../../domain/repositories/marketplace.repository';
+import { IMarketplaceRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Marketplace } from '../../domain/entities/marketplace.entity';
 import { Shop } from '../../domain/entities/shop.entity';
 
@@ -6,6 +8,7 @@ import { Shop } from '../../domain/entities/shop.entity';
  * Service class for handling Marketplace-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class MarketplaceService {
     /**
      * Constructor for MarketplaceService.
@@ -14,6 +17,7 @@ export class MarketplaceService {
      * @param marketplaceRepository - The repository that handles Marketplace data operations.
      */
     constructor(
+        @inject(IMarketplaceRepositoryToken)
         private readonly marketplaceRepository: IMarketplaceRepository
     ) {}
 

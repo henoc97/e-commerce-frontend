@@ -1,11 +1,13 @@
 import { ProductImageService } from '../../services/product-image.service';
 import { ProductImage } from '../../../domain/entities/product-image.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getByProductId.
  * This class encapsulates the business logic for getByProductId.
  * It interacts with the ProductImage service to perform operations on the productimage repository.
  */
+@injectable()
 export class GetByProductIdProductImage {
     constructor(private readonly service: ProductImageService) {}
 

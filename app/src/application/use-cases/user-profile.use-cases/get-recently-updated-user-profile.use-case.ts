@@ -1,11 +1,13 @@
 import { UserProfileService } from '../../services/user-profile.service';
 import { UserProfile } from '../../../domain/entities/user-profile.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getRecentlyUpdated.
  * This class encapsulates the business logic for getRecentlyUpdated.
  * It interacts with the UserProfile service to perform operations on the userprofile repository.
  */
+@injectable()
 export class GetRecentlyUpdatedUserProfile {
     constructor(private readonly service: UserProfileService) {}
 

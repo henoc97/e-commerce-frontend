@@ -1,10 +1,13 @@
-import { IUserActivityRepository } from '../../domain/repositories/user-activity.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IUserActivityRepository } from '../../domain/repositories/user-activity.repository';
+import { IUserActivityRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { UserActivity } from '../../domain/entities/user-activity.entity';
 
 /**
  * Service class for handling UserActivity-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class UserActivityService {
     /**
      * Constructor for UserActivityService.
@@ -13,6 +16,7 @@ export class UserActivityService {
      * @param userActivityRepository - The repository that handles UserActivity data operations.
      */
     constructor(
+        @inject(IUserActivityRepositoryToken)
         private readonly userActivityRepository: IUserActivityRepository
     ) {}
 

@@ -1,10 +1,12 @@
 import { OrderItemService } from '../../services/order-item.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for delete.
  * This class encapsulates the business logic for delete.
  * It interacts with the OrderItem service to perform operations on the orderitem repository.
  */
+@injectable()
 export class DeleteOrderItem {
     constructor(private readonly service: OrderItemService) {}
 

@@ -2,11 +2,13 @@ import { RefundService } from '../../services/refund.service';
 import { Refund } from '../../../domain/entities/refund.entity';
 import { RefundStatus } from '../../../domain/enums/refund-status.enum';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for process.
  * This class encapsulates the business logic for process.
  * It interacts with the Refund service to perform operations on the refund repository.
  */
+@injectable()
 export class ProcessRefund {
     constructor(private readonly service: RefundService) {}
 

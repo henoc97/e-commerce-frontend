@@ -1,10 +1,13 @@
-import { IProductVariantRepository } from '../../domain/repositories/product-variant.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IProductVariantRepository } from '../../domain/repositories/product-variant.repository';
+import { IProductVariantRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { ProductVariant } from '../../domain/entities/product-variant.entity';
 
 /**
  * Service class for handling ProductVariant-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class ProductVariantService {
     /**
      * Constructor for ProductVariantService.
@@ -13,6 +16,7 @@ export class ProductVariantService {
      * @param productVariantRepository - The repository that handles ProductVariant data operations.
      */
     constructor(
+        @inject(IProductVariantRepositoryToken)
         private readonly productVariantRepository: IProductVariantRepository
     ) {}
 
@@ -34,23 +38,6 @@ export class ProductVariantService {
      */
     public async getById(id: number): Promise<ProductVariant | null> {
         return await this.productVariantRepository.getById(id);
-    }
-
-    /**
-     * Service method for update.
-     * Calls the repository's update method.
-     * @param id - The number required by the repository method.
-     * @param updates - The Partial required by the repository method.
-     * @returns Promise<ProductVariant> - The result from the repository method.
-     */
-    public async update(
-        id: number,
-        updates: Partial<ProductVariant>
-    ): Promise<ProductVariant> {
-        return await this.productVariantRepository.update(
-            id,
-            updates
-        );
     }
 
     /**

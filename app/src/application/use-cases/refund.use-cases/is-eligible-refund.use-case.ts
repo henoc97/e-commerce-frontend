@@ -1,11 +1,13 @@
 import { Refund } from '../../../domain/entities/refund.entity';
 import { RefundService } from '../../services/refund.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for isEligible.
  * This class encapsulates the business logic for isEligible.
  * It interacts with the Refund service to perform operations on the refund repository.
  */
+@injectable()
 export class IsEligibleRefund {
     constructor(private readonly service: RefundService) {}
 

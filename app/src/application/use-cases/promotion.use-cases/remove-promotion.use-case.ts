@@ -1,10 +1,12 @@
 import { PromotionService } from '../../services/promotion.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for remove.
  * This class encapsulates the business logic for remove.
  * It interacts with the Promotion service to perform operations on the promotion repository.
  */
+@injectable()
 export class RemovePromotion {
     constructor(private readonly service: PromotionService) {}
 

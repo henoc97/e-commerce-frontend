@@ -1,11 +1,13 @@
 import { PromotionService } from '../../services/promotion.service';
 import { Promotion } from '../../../domain/entities/promotion.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for modify.
  * This class encapsulates the business logic for modify.
  * It interacts with the Promotion service to perform operations on the promotion repository.
  */
+@injectable()
 export class ModifyPromotion {
     constructor(private readonly service: PromotionService) {}
 

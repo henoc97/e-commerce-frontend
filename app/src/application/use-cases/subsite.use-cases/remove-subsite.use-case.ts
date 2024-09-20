@@ -1,10 +1,12 @@
 import { SubsiteService } from '../../services/subsite.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for remove.
  * This class encapsulates the business logic for remove.
  * It interacts with the Subsite service to perform operations on the subsite repository.
  */
+@injectable()
 export class RemoveSubsite {
     constructor(private readonly service: SubsiteService) {}
 

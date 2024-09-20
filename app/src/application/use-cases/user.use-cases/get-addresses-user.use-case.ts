@@ -1,11 +1,13 @@
 import { Address } from '../../../domain/entities/address.entity';
 import { UserService } from '../../services/user.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getAddresses.
  * This class encapsulates the business logic for getAddresses.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class GetAddressesUser {
     constructor(private readonly service: UserService) {}
 

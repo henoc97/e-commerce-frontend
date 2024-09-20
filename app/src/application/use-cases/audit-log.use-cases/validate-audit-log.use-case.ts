@@ -1,11 +1,13 @@
 import { AuditLog } from '../../../domain/entities/audit-log.entity';
 import { AuditLogService } from '../../services/audit-log.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for validate.
  * This class encapsulates the business logic for validate.
  * It interacts with the AuditLog service to perform operations on the auditlog repository.
  */
+@injectable()
 export class ValidateAuditLog {
     constructor(private readonly service: AuditLogService) {}
 

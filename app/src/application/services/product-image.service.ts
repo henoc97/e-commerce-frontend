@@ -1,10 +1,13 @@
-import { IProductImageRepository } from '../../domain/repositories/product-image.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IProductImageRepository } from '../../domain/repositories/product-image.repository';
+import { IProductImageRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { ProductImage } from '../../domain/entities/product-image.entity';
 
 /**
  * Service class for handling ProductImage-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class ProductImageService {
     /**
      * Constructor for ProductImageService.
@@ -13,6 +16,7 @@ export class ProductImageService {
      * @param productImageRepository - The repository that handles ProductImage data operations.
      */
     constructor(
+        @inject(IProductImageRepositoryToken)
         private readonly productImageRepository: IProductImageRepository
     ) {}
 
@@ -47,10 +51,7 @@ export class ProductImageService {
         id: number,
         updates: Partial<ProductImage>
     ): Promise<ProductImage> {
-        return await this.productImageRepository.update(
-            id,
-            updates
-        );
+        return await this.productImageRepository.update(id, updates);
     }
 
     /**

@@ -1,10 +1,12 @@
 import { NotificationService } from '../../services/notification.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for countUnread.
  * This class encapsulates the business logic for countUnread.
  * It interacts with the Notification service to perform operations on the notification repository.
  */
+@injectable()
 export class CountUnreadNotification {
     constructor(private readonly service: NotificationService) {}
 

@@ -2,11 +2,13 @@ import { OrderService } from '../../services/order.service';
 import { Order } from '../../../domain/entities/order.entity';
 import { OrderStatus } from '../../../domain/enums/order-status.enum';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getByStatus.
  * This class encapsulates the business logic for getByStatus.
  * It interacts with the Order service to perform operations on the order repository.
  */
+@injectable()
 export class GetByStatusOrder {
     constructor(private readonly service: OrderService) {}
 

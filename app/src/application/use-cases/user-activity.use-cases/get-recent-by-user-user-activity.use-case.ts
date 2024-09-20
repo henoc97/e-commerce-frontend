@@ -1,11 +1,13 @@
 import { UserActivityService } from '../../services/user-activity.service';
 import { UserActivity } from '../../../domain/entities/user-activity.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getRecentByUser.
  * This class encapsulates the business logic for getRecentByUser.
  * It interacts with the UserActivity service to perform operations on the useractivity repository.
  */
+@injectable()
 export class GetRecentByUserUserActivity {
     constructor(private readonly service: UserActivityService) {}
 

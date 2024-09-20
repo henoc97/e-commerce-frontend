@@ -1,11 +1,13 @@
-import { IRefundRepository } from '../../domain/repositories/refund.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IRefundRepository } from '../../domain/repositories/refund.repository';
+import { IRefundRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Refund } from '../../domain/entities/refund.entity';
-import { RefundStatus } from '../../domain/enums/refund-status.enum';
 
 /**
  * Service class for handling Refund-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class RefundService {
     /**
      * Constructor for RefundService.
@@ -13,7 +15,10 @@ export class RefundService {
      *
      * @param refundRepository - The repository that handles Refund data operations.
      */
-    constructor(private readonly refundRepository: IRefundRepository) {}
+    constructor(
+        @inject(IRefundRepositoryToken)
+        private readonly refundRepository: IRefundRepository
+    ) {}
 
     /**
      * Service method for create.
@@ -70,7 +75,7 @@ export class RefundService {
      * Service method for isEligible.
      * Calls the repository's isEligible method.
      * @param refund - The Refund required by the repository method.
-     * @returns boolean - The result from the repository method.
+     * @returns Promise<boolean> - The result from the repository method.
      */
     public async isEligible(refund: Refund): Promise<boolean> {
         return await this.refundRepository.isEligible(refund);

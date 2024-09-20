@@ -1,11 +1,13 @@
 import { UserService } from '../../services/user.service';
 import { UserActivity } from '../../../domain/entities/user-activity.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getActivityLog.
  * This class encapsulates the business logic for getActivityLog.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class GetActivityLogUser {
     constructor(private readonly service: UserService) {}
 

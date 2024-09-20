@@ -1,10 +1,13 @@
-import { ISubscriptionRepository } from '../../domain/repositories/subscription.repository';
+import { injectable, inject } from 'tsyringe';
+import type { ISubscriptionRepository } from '../../domain/repositories/subscription.repository';
+import { ISubscriptionRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Subscription } from '../../domain/entities/subscription.entity';
 
 /**
  * Service class for handling Subscription-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class SubscriptionService {
     /**
      * Constructor for SubscriptionService.
@@ -13,6 +16,7 @@ export class SubscriptionService {
      * @param subscriptionRepository - The repository that handles Subscription data operations.
      */
     constructor(
+        @inject(ISubscriptionRepositoryToken)
         private readonly subscriptionRepository: ISubscriptionRepository
     ) {}
 
@@ -47,10 +51,7 @@ export class SubscriptionService {
         id: number,
         updates: Partial<Subscription>
     ): Promise<Subscription> {
-        return await this.subscriptionRepository.update(
-            id,
-            updates
-        );
+        return await this.subscriptionRepository.update(id, updates);
     }
 
     /**
@@ -71,23 +72,6 @@ export class SubscriptionService {
      */
     public async getByVendor(vendorId: number): Promise<Subscription[]> {
         return await this.subscriptionRepository.getByVendor(vendorId);
-    }
-
-    /**
-     * Service method for getByPriceRange.
-     * Calls the repository's getByPriceRange method.
-     * @param minPrice - The number required by the repository method.
-     * @param maxPrice - The number required by the repository method.
-     * @returns Promise<Subscription[]> - The result from the repository method.
-     */
-    public async getByPriceRange(
-        minPrice: number,
-        maxPrice: number
-    ): Promise<Subscription[]> {
-        return await this.subscriptionRepository.getByPriceRange(
-            minPrice,
-            maxPrice
-        );
     }
 
     /**

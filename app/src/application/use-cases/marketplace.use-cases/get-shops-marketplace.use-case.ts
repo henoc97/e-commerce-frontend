@@ -1,11 +1,13 @@
 import { Shop } from '@/app/src/domain/entities/shop.entity';
 import { MarketplaceService } from '../../services/marketplace.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getShops.
  * This class encapsulates the business logic for getShops.
  * It interacts with the Marketplace service to perform operations on the marketplace repository.
  */
+@injectable()
 export class GetShopsMarketplace {
     constructor(private readonly service: MarketplaceService) {}
 

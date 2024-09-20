@@ -1,10 +1,12 @@
 import { SubsiteService } from '../../services/subsite.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for countByUser.
  * This class encapsulates the business logic for countByUser.
  * It interacts with the Subsite service to perform operations on the subsite repository.
  */
+@injectable()
 export class CountByUserSubsite {
     constructor(private readonly service: SubsiteService) {}
 

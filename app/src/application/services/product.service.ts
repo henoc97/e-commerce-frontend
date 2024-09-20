@@ -1,8 +1,8 @@
-import { IProductRepository } from '../../domain/repositories/product.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IProductRepository } from '../../domain/repositories/product.repository';
+import { IProductRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Product } from '../../domain/entities/product.entity';
 import { Promotion } from '../../domain/entities/promotion.entity';
-import { ProductImage } from '../../domain/entities/product-image.entity';
-import { ProductVariant } from '../../domain/entities/product-variant.entity';
 import { Review } from '../../domain/entities/review.entity';
 import { CartItem } from '../../domain/entities/cart-item.entity';
 
@@ -10,6 +10,7 @@ import { CartItem } from '../../domain/entities/cart-item.entity';
  * Service class for handling Product-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class ProductService {
     /**
      * Constructor for ProductService.
@@ -17,7 +18,10 @@ export class ProductService {
      *
      * @param productRepository - The repository that handles Product data operations.
      */
-    constructor(private readonly productRepository: IProductRepository) {}
+    constructor(
+        @inject(IProductRepositoryToken)
+        private readonly productRepository: IProductRepository
+    ) {}
 
     /**
      * Service method for create.

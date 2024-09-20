@@ -1,10 +1,12 @@
 import { SubsiteService } from '../../services/subsite.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getConfig.
  * This class encapsulates the business logic for getConfig.
  * It interacts with the Subsite service to perform operations on the subsite repository.
  */
+@injectable()
 export class GetConfigSubsite {
     constructor(private readonly service: SubsiteService) {}
 

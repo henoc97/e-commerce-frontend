@@ -1,11 +1,13 @@
 import { ShopService } from '../../services/shop.service';
 import { Shop } from '../../../domain/entities/shop.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getById.
  * This class encapsulates the business logic for getById.
  * It interacts with the Shop service to perform operations on the shop repository.
  */
+@injectable()
 export class GetByIdShop {
     constructor(private readonly service: ShopService) {}
 

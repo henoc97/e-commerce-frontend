@@ -1,4 +1,6 @@
-import { ICategoryRepository } from '../../domain/repositories/category.repository';
+import { injectable, inject } from 'tsyringe';
+import type { ICategoryRepository } from '../../domain/repositories/category.repository';
+import { ICategoryRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Category } from '../../domain/entities/category.entity';
 import { Product } from '../../domain/entities/product.entity';
 
@@ -6,6 +8,7 @@ import { Product } from '../../domain/entities/product.entity';
  * Service class for handling Category-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class CategoryService {
     /**
      * Constructor for CategoryService.
@@ -13,7 +16,10 @@ export class CategoryService {
      *
      * @param categoryRepository - The repository that handles Category data operations.
      */
-    constructor(private readonly categoryRepository: ICategoryRepository) {}
+    constructor(
+        @inject(ICategoryRepositoryToken)
+        private readonly categoryRepository: ICategoryRepository
+    ) {}
 
     /**
      * Service method for create.

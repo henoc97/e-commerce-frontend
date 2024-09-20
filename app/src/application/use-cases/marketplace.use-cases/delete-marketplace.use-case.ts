@@ -1,10 +1,12 @@
 import { MarketplaceService } from '../../services/marketplace.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for delete.
  * This class encapsulates the business logic for delete.
  * It interacts with the Marketplace service to perform operations on the marketplace repository.
  */
+@injectable()
 export class DeleteMarketplace {
     constructor(private readonly service: MarketplaceService) {}
 

@@ -2,11 +2,13 @@ import { TicketService } from '../../services/ticket.service';
 import { Ticket } from '../../../domain/entities/ticket.entity';
 import { TicketStatus } from '../../../domain/enums/ticket-status.enum';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getByStatus.
  * This class encapsulates the business logic for getByStatus.
  * It interacts with the Ticket service to perform operations on the ticket repository.
  */
+@injectable()
 export class GetByStatusTicket {
     constructor(private readonly service: TicketService) {}
 

@@ -1,11 +1,13 @@
 import { VendorService } from '../../services/vendor.service';
 import { Vendor } from '../../../domain/entities/vendor.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getall.
  * This class encapsulates the business logic for getall.
  * It interacts with the Vendor service to perform operations on the vendor repository.
  */
+@injectable()
 export class GetallVendor {
     constructor(private readonly service: VendorService) {}
 

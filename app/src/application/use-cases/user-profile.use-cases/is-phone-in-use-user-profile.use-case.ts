@@ -1,10 +1,12 @@
 import { UserProfileService } from '../../services/user-profile.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for isPhoneInUse.
  * This class encapsulates the business logic for isPhoneInUse.
  * It interacts with the UserProfile service to perform operations on the userprofile repository.
  */
+@injectable()
 export class IsPhoneInUseUserProfile {
     constructor(private readonly service: UserProfileService) {}
 

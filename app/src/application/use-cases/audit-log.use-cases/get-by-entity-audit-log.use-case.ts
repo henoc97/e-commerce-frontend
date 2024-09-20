@@ -1,11 +1,13 @@
 import { AuditLogService } from '../../services/audit-log.service';
 import { AuditLog } from '../../../domain/entities/audit-log.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getByEntity.
  * This class encapsulates the business logic for getByEntity.
  * It interacts with the AuditLog service to perform operations on the auditlog repository.
  */
+@injectable()
 export class GetByEntityAuditLog {
     constructor(private readonly service: AuditLogService) {}
 

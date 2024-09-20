@@ -1,11 +1,13 @@
 import { NotificationService } from '../../services/notification.service';
 import { Notification } from '../../../domain/entities/notification.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for update.
  * This class encapsulates the business logic for update.
  * It interacts with the Notification service to perform operations on the notification repository.
  */
+@injectable()
 export class UpdateNotification {
     constructor(private readonly service: NotificationService) {}
 

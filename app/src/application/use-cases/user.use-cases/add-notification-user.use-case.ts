@@ -2,11 +2,13 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../../domain/entities/user.entity';
 import { Notification } from '../../../domain/entities/notification.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for addNotification.
  * This class encapsulates the business logic for addNotification.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class AddNotificationUser {
     constructor(private readonly service: UserService) {}
 

@@ -1,11 +1,13 @@
 import { Order } from '../../../domain/entities/order.entity';
 import { UserService } from '../../services/user.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getOrders.
  * This class encapsulates the business logic for getOrders.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class GetOrdersUser {
     constructor(private readonly service: UserService) {}
 

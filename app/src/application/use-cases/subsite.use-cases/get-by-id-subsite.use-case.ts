@@ -1,11 +1,13 @@
 import { SubsiteService } from '../../services/subsite.service';
 import { Subsite } from '../../../domain/entities/subsite.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getById.
  * This class encapsulates the business logic for getById.
  * It interacts with the Subsite service to perform operations on the subsite repository.
  */
+@injectable()
 export class GetByIdSubsite {
     constructor(private readonly service: SubsiteService) {}
 

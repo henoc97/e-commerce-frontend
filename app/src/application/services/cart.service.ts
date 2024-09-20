@@ -1,11 +1,13 @@
-import { ICartRepository } from '../../domain/repositories/cart.repository';
+import { injectable, inject } from 'tsyringe';
+import type { ICartRepository } from '../../domain/repositories/cart.repository';
+import { ICartRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Cart } from '../../domain/entities/cart.entity';
-import { CartItem } from '../../domain/entities/cart-item.entity';
 
 /**
  * Service class for handling Cart-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class CartService {
     /**
      * Constructor for CartService.
@@ -13,7 +15,10 @@ export class CartService {
      *
      * @param cartRepository - The repository that handles Cart data operations.
      */
-    constructor(private readonly cartRepository: ICartRepository) {}
+    constructor(
+        @inject(ICartRepositoryToken)
+        private readonly cartRepository: ICartRepository
+    ) {}
 
     /**
      * Service method for create.

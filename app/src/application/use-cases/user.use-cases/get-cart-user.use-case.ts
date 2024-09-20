@@ -1,11 +1,13 @@
 import { Cart } from '../../../domain/entities/cart.entity';
 import { UserService } from '../../services/user.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getCart.
  * This class encapsulates the business logic for getCart.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class GetCartUser {
     constructor(private readonly service: UserService) {}
 

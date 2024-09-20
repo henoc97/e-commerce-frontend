@@ -1,10 +1,12 @@
 import { ShopService } from '../../services/shop.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for delete.
  * This class encapsulates the business logic for delete.
  * It interacts with the Shop service to perform operations on the shop repository.
  */
+@injectable()
 export class DeleteShop {
     constructor(private readonly service: ShopService) {}
 

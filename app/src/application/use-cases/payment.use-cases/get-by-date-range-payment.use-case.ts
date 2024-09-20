@@ -1,11 +1,13 @@
 import { PaymentService } from '../../services/payment.service';
 import { Payment } from '../../../domain/entities/payment.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getByDateRange.
  * This class encapsulates the business logic for getByDateRange.
  * It interacts with the Payment service to perform operations on the payment repository.
  */
+@injectable()
 export class GetByDateRangePayment {
     constructor(private readonly service: PaymentService) {}
 

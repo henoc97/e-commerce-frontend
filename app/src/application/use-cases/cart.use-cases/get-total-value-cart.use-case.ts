@@ -1,10 +1,12 @@
 import { CartService } from '../../services/cart.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getTotalValue.
  * This class encapsulates the business logic for getTotalValue.
  * It interacts with the Cart service to perform operations on the cart repository.
  */
+@injectable()
 export class GetTotalValueCart {
     constructor(private readonly service: CartService) {}
 

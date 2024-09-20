@@ -1,10 +1,12 @@
 import { PaymentService } from '../../services/payment.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getTotalAmountByDateRange.
  * This class encapsulates the business logic for getTotalAmountByDateRange.
  * It interacts with the Payment service to perform operations on the payment repository.
  */
+@injectable()
 export class GetTotalAmountByDateRangePayment {
     constructor(private readonly service: PaymentService) {}
 

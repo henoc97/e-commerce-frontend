@@ -1,11 +1,13 @@
 import { Ticket } from '../../../domain/entities/ticket.entity';
 import { UserService } from '../../services/user.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getTickets.
  * This class encapsulates the business logic for getTickets.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class GetTicketsUser {
     constructor(private readonly service: UserService) {}
 

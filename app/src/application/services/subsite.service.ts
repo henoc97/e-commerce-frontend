@@ -1,10 +1,13 @@
-import { ISubsiteRepository } from '../../domain/repositories/subsite.repository';
+import { injectable, inject } from 'tsyringe';
+import type { ISubsiteRepository } from '../../domain/repositories/subsite.repository';
+import { ISubsiteRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Subsite } from '../../domain/entities/subsite.entity';
 
 /**
  * Service class for handling Subsite-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class SubsiteService {
     /**
      * Constructor for SubsiteService.
@@ -12,7 +15,10 @@ export class SubsiteService {
      *
      * @param subsiteRepository - The repository that handles Subsite data operations.
      */
-    constructor(private readonly subsiteRepository: ISubsiteRepository) {}
+    constructor(
+        @inject(ISubsiteRepositoryToken)
+        private readonly subsiteRepository: ISubsiteRepository
+    ) {}
 
     /**
      * Service method for create.

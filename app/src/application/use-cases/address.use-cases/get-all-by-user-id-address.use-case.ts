@@ -1,11 +1,13 @@
 import { AddressService } from '../../services/address.service';
 import { Address } from '../../../domain/entities/address.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getAllByUserId.
  * This class encapsulates the business logic for getAllByUserId.
  * It interacts with the Address service to perform operations on the address repository.
  */
+@injectable()
 export class GetAllByUserIdAddress {
     constructor(private readonly service: AddressService) {}
 

@@ -1,10 +1,12 @@
 import { TicketService } from '../../services/ticket.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for countOpenByUser.
  * This class encapsulates the business logic for countOpenByUser.
  * It interacts with the Ticket service to perform operations on the ticket repository.
  */
+@injectable()
 export class CountOpenByUserTicket {
     constructor(private readonly service: TicketService) {}
 

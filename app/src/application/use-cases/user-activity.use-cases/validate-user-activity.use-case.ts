@@ -1,11 +1,13 @@
 import { UserActivity } from '../../../domain/entities/user-activity.entity';
 import { UserActivityService } from '../../services/user-activity.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for validate.
  * This class encapsulates the business logic for validate.
  * It interacts with the UserActivity service to perform operations on the useractivity repository.
  */
+@injectable()
 export class ValidateUserActivity {
     constructor(private readonly service: UserActivityService) {}
 

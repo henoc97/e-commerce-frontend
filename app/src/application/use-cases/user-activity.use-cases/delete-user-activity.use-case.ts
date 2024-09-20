@@ -1,10 +1,12 @@
 import { UserActivityService } from '../../services/user-activity.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for delete.
  * This class encapsulates the business logic for delete.
  * It interacts with the UserActivity service to perform operations on the useractivity repository.
  */
+@injectable()
 export class DeleteUserActivity {
     constructor(private readonly service: UserActivityService) {}
 

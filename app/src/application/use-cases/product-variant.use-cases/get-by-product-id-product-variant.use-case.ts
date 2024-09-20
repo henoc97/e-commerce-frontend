@@ -1,11 +1,13 @@
 import { ProductVariantService } from '../../services/product-variant.service';
 import { ProductVariant } from '../../../domain/entities/product-variant.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getByProductId.
  * This class encapsulates the business logic for getByProductId.
  * It interacts with the ProductVariant service to perform operations on the productvariant repository.
  */
+@injectable()
 export class GetByProductIdProductVariant {
     constructor(private readonly service: ProductVariantService) {}
 

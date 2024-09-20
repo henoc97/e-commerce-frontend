@@ -1,14 +1,17 @@
-import { IShopRepository } from '../../domain/repositories/shop.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IShopRepository } from '../../domain/repositories/shop.repository';
+import { IShopRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Shop } from '../../domain/entities/shop.entity';
 import { Product } from '../../domain/entities/product.entity';
+import { Order } from '../../domain/entities/order.entity';
 import { Category } from '../../domain/entities/category.entity';
 import { Marketplace } from '../../domain/entities/marketplace.entity';
-import { Order } from '../../domain/entities/order.entity';
 
 /**
  * Service class for handling Shop-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class ShopService {
     /**
      * Constructor for ShopService.
@@ -16,7 +19,10 @@ export class ShopService {
      *
      * @param shopRepository - The repository that handles Shop data operations.
      */
-    constructor(private readonly shopRepository: IShopRepository) {}
+    constructor(
+        @inject(IShopRepositoryToken)
+        private readonly shopRepository: IShopRepository
+    ) {}
 
     /**
      * Service method for create.
@@ -164,23 +170,6 @@ export class ShopService {
     }
 
     /**
-     * Service method for associateMarketplace.
-     * Calls the repository's associateMarketplace method.
-     * @param shopId - The number required by the repository method.
-     * @param marketplace - The Marketplace required by the repository method.
-     * @returns Promise<Shop> - The result from the repository method.
-     */
-    public async associateMarketplace(
-        shopId: number,
-        marketplace: Marketplace
-    ): Promise<Shop> {
-        return await this.shopRepository.associateMarketplace(
-            shopId,
-            marketplace
-        );
-    }
-
-    /**
      * Service method for getMarketplace.
      * Calls the repository's getMarketplace method.
      * @param shopId - The number required by the repository method.
@@ -217,26 +206,6 @@ export class ShopService {
      */
     public async getTotalSales(shopId: number): Promise<number> {
         return await this.shopRepository.getTotalSales(shopId);
-    }
-
-    /**
-     * Service method for getOrderReport.
-     * Calls the repository's getOrderReport method.
-     * @param shopId - The number required by the repository method.
-     * @param startDate - The Date required by the repository method.
-     * @param endDate - The Date required by the repository method.
-     * @returns Promise<any> - The result from the repository method.
-     */
-    public async getOrderReport(
-        shopId: number,
-        startDate: Date,
-        endDate: Date
-    ): Promise<any> {
-        return await this.shopRepository.getOrderReport(
-            shopId,
-            startDate,
-            endDate
-        );
     }
 
     /**

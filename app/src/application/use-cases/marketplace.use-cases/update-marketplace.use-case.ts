@@ -1,11 +1,13 @@
 import { MarketplaceService } from '../../services/marketplace.service';
 import { Marketplace } from '../../../domain/entities/marketplace.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for update.
  * This class encapsulates the business logic for update.
  * It interacts with the Marketplace service to perform operations on the marketplace repository.
  */
+@injectable()
 export class UpdateMarketplace {
     constructor(private readonly service: MarketplaceService) {}
 

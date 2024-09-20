@@ -1,10 +1,12 @@
 import { CartItemService } from '../../services/cart-item.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for clearCart.
  * This class encapsulates the business logic for clearCart.
  * It interacts with the CartItem service to perform operations on the cartitem repository.
  */
+@injectable()
 export class ClearCartCartItem {
     constructor(private readonly service: CartItemService) {}
 

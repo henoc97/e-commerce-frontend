@@ -1,10 +1,12 @@
 import { CartItemService } from '../../services/cart-item.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for remove.
  * This class encapsulates the business logic for remove.
  * It interacts with the CartItem service to perform operations on the cartitem repository.
  */
+@injectable()
 export class RemoveCartItem {
     constructor(private readonly service: CartItemService) {}
 

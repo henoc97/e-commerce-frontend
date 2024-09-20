@@ -1,10 +1,12 @@
 import { UserService } from '../../services/user.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for delete.
  * This class encapsulates the business logic for delete.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class DeleteUser {
     constructor(private readonly service: UserService) {}
 

@@ -1,10 +1,12 @@
 import { NewsletterSubscriptionService } from '../../services/newsletter-subscription.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for delete.
  * This class encapsulates the business logic for delete.
  * It interacts with the NewsletterSubscription service to perform operations on the newslettersubscription repository.
  */
+@injectable()
 export class DeleteNewsletterSubscription {
     constructor(private readonly service: NewsletterSubscriptionService) {}
 

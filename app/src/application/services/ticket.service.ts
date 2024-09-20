@@ -1,11 +1,13 @@
-import { ITicketRepository } from '../../domain/repositories/ticket.repository';
+import { injectable, inject } from 'tsyringe';
+import type { ITicketRepository } from '../../domain/repositories/ticket.repository';
+import { ITicketRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Ticket } from '../../domain/entities/ticket.entity';
-import { TicketStatus } from '../../domain/enums/ticket-status.enum';
 
 /**
  * Service class for handling Ticket-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class TicketService {
     /**
      * Constructor for TicketService.
@@ -13,7 +15,10 @@ export class TicketService {
      *
      * @param ticketRepository - The repository that handles Ticket data operations.
      */
-    constructor(private readonly ticketRepository: ITicketRepository) {}
+    constructor(
+        @inject(ITicketRepositoryToken)
+        private readonly ticketRepository: ITicketRepository
+    ) {}
 
     /**
      * Service method for create.

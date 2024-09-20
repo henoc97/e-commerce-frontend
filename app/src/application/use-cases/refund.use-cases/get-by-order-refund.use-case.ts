@@ -1,11 +1,13 @@
 import { RefundService } from '../../services/refund.service';
 import { Refund } from '../../../domain/entities/refund.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getByOrder.
  * This class encapsulates the business logic for getByOrder.
  * It interacts with the Refund service to perform operations on the refund repository.
  */
+@injectable()
 export class GetByOrderRefund {
     constructor(private readonly service: RefundService) {}
 

@@ -1,10 +1,13 @@
-import { IReviewRepository } from '../../domain/repositories/review.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IReviewRepository } from '../../domain/repositories/review.repository';
+import { IReviewRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Review } from '../../domain/entities/review.entity';
 
 /**
  * Service class for handling Review-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class ReviewService {
     /**
      * Constructor for ReviewService.
@@ -12,7 +15,10 @@ export class ReviewService {
      *
      * @param reviewRepository - The repository that handles Review data operations.
      */
-    constructor(private readonly reviewRepository: IReviewRepository) {}
+    constructor(
+        @inject(IReviewRepositoryToken)
+        private readonly reviewRepository: IReviewRepository
+    ) {}
 
     /**
      * Service method for create.

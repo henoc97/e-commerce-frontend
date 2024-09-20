@@ -1,11 +1,13 @@
 import { Subsite } from '../../../domain/entities/subsite.entity';
 import { UserService } from '../../services/user.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getSubsites.
  * This class encapsulates the business logic for getSubsites.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class GetSubsitesUser {
     constructor(private readonly service: UserService) {}
 

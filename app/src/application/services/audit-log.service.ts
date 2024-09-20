@@ -1,10 +1,13 @@
-import { IAuditLogRepository } from '../../domain/repositories/audit-log.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IAuditLogRepository } from '../../domain/repositories/audit-log.repository';
+import { IAuditLogRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { AuditLog } from '../../domain/entities/audit-log.entity';
 
 /**
  * Service class for handling AuditLog-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class AuditLogService {
     /**
      * Constructor for AuditLogService.
@@ -12,7 +15,10 @@ export class AuditLogService {
      *
      * @param auditLogRepository - The repository that handles AuditLog data operations.
      */
-    constructor(private readonly auditLogRepository: IAuditLogRepository) {}
+    constructor(
+        @inject(IAuditLogRepositoryToken)
+        private readonly auditLogRepository: IAuditLogRepository
+    ) {}
 
     /**
      * Service method for create.

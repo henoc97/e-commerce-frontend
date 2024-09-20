@@ -1,10 +1,12 @@
 import { UserProfileService } from '../../services/user-profile.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for remove.
  * This class encapsulates the business logic for remove.
  * It interacts with the UserProfile service to perform operations on the userprofile repository.
  */
+@injectable()
 export class RemoveUserProfile {
     constructor(private readonly service: UserProfileService) {}
 

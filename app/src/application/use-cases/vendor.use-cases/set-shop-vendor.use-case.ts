@@ -2,11 +2,13 @@ import { VendorService } from '../../services/vendor.service';
 import { Vendor } from '../../../domain/entities/vendor.entity';
 import { Shop } from '@/app/src/domain/entities/shop.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for setShop.
  * This class encapsulates the business logic for setShop.
  * It interacts with the Vendor service to perform operations on the vendor repository.
  */
+@injectable()
 export class SetShopVendor {
     constructor(private readonly service: VendorService) {}
 

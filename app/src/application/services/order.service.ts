@@ -1,11 +1,13 @@
-import { IOrderRepository } from '../../domain/repositories/order.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IOrderRepository } from '../../domain/repositories/order.repository';
+import { IOrderRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Order } from '../../domain/entities/order.entity';
-import { OrderStatus } from '../../domain/enums/order-status.enum';
 
 /**
  * Service class for handling Order-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class OrderService {
     /**
      * Constructor for OrderService.
@@ -13,7 +15,10 @@ export class OrderService {
      *
      * @param orderRepository - The repository that handles Order data operations.
      */
-    constructor(private readonly orderRepository: IOrderRepository) {}
+    constructor(
+        @inject(IOrderRepositoryToken)
+        private readonly orderRepository: IOrderRepository
+    ) {}
 
     /**
      * Service method for create.

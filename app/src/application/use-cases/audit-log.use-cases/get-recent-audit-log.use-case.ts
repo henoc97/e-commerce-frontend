@@ -1,11 +1,13 @@
 import { AuditLogService } from '../../services/audit-log.service';
 import { AuditLog } from '../../../domain/entities/audit-log.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getRecent.
  * This class encapsulates the business logic for getRecent.
  * It interacts with the AuditLog service to perform operations on the auditlog repository.
  */
+@injectable()
 export class GetRecentAuditLog {
     constructor(private readonly service: AuditLogService) {}
 

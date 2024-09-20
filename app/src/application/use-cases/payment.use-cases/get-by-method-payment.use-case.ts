@@ -1,11 +1,13 @@
 import { PaymentService } from '../../services/payment.service';
 import { Payment } from '../../../domain/entities/payment.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getByMethod.
  * This class encapsulates the business logic for getByMethod.
  * It interacts with the Payment service to perform operations on the payment repository.
  */
+@injectable()
 export class GetByMethodPayment {
     constructor(private readonly service: PaymentService) {}
 

@@ -1,11 +1,13 @@
 import { NotificationService } from '../../services/notification.service';
 import { Notification } from '../../../domain/entities/notification.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getById.
  * This class encapsulates the business logic for getById.
  * It interacts with the Notification service to perform operations on the notification repository.
  */
+@injectable()
 export class GetByIdNotification {
     constructor(private readonly service: NotificationService) {}
 

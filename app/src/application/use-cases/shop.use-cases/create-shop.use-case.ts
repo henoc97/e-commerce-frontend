@@ -1,11 +1,13 @@
 import { ShopService } from '../../services/shop.service';
 import { Shop } from '../../../domain/entities/shop.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for create.
  * This class encapsulates the business logic for create.
  * It interacts with the Shop service to perform operations on the shop repository.
  */
+@injectable()
 export class CreateShop {
     constructor(private readonly service: ShopService) {}
 

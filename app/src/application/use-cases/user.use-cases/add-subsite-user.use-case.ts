@@ -2,11 +2,13 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../../domain/entities/user.entity';
 import { Subsite } from '../../../domain/entities/subsite.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for addSubsite.
  * This class encapsulates the business logic for addSubsite.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class AddSubsiteUser {
     constructor(private readonly service: UserService) {}
 

@@ -1,11 +1,13 @@
 import { TicketService } from '../../services/ticket.service';
 import { Ticket } from '../../../domain/entities/ticket.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for update.
  * This class encapsulates the business logic for update.
  * It interacts with the Ticket service to perform operations on the ticket repository.
  */
+@injectable()
 export class UpdateTicket {
     constructor(private readonly service: TicketService) {}
 

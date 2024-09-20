@@ -1,11 +1,13 @@
 import { Subscription } from '../../../domain/entities/subscription.entity';
 import { VendorService } from '../../services/vendor.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getSubscription.
  * This class encapsulates the business logic for getSubscription.
  * It interacts with the Vendor service to perform operations on the vendor repository.
  */
+@injectable()
 export class GetSubscriptionVendor {
     constructor(private readonly service: VendorService) {}
 

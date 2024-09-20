@@ -1,10 +1,13 @@
-import { IAddressRepository } from '../../domain/repositories/address.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IAddressRepository } from '../../domain/repositories/address.repository';
+import { IAddressRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Address } from '../../domain/entities/address.entity';
 
 /**
  * Service class for handling Address-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class AddressService {
     /**
      * Constructor for AddressService.
@@ -12,7 +15,10 @@ export class AddressService {
      *
      * @param addressRepository - The repository that handles Address data operations.
      */
-    constructor(private readonly addressRepository: IAddressRepository) {}
+    constructor(
+        @inject(IAddressRepositoryToken)
+        private readonly addressRepository: IAddressRepository
+    ) {}
 
     /**
      * Service method for create.
@@ -66,20 +72,6 @@ export class AddressService {
      */
     public async getAllByUserId(userId: number): Promise<Address[]> {
         return await this.addressRepository.getAllByUserId(userId);
-    }
-
-    /**
-     * Service method for getByUserIdAndId.
-     * Calls the repository's getByUserIdAndId method.
-     * @param userId - The number required by the repository method.
-     * @param addressId - The number required by the repository method.
-     * @returns Promise<Address | null> - The result from the repository method.
-     */
-    public async getByUserIdAndId(
-        userId: number,
-        addressId: number
-    ): Promise<Address | null> {
-        return await this.addressRepository.getByUserIdAndId(userId, addressId);
     }
 
     /**

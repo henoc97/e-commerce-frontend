@@ -1,11 +1,13 @@
-import { INotificationRepository } from '../../domain/repositories/notification.repository';
+import { injectable, inject } from 'tsyringe';
+import type { INotificationRepository } from '../../domain/repositories/notification.repository';
+import { INotificationRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Notification } from '../../domain/entities/notification.entity';
-import { NotificationType } from '../../domain/enums/notification-type.enum';
 
 /**
  * Service class for handling Notification-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class NotificationService {
     /**
      * Constructor for NotificationService.
@@ -14,6 +16,7 @@ export class NotificationService {
      * @param notificationRepository - The repository that handles Notification data operations.
      */
     constructor(
+        @inject(INotificationRepositoryToken)
         private readonly notificationRepository: INotificationRepository
     ) {}
 
@@ -48,10 +51,7 @@ export class NotificationService {
         id: number,
         updates: Partial<Notification>
     ): Promise<Notification> {
-        return await this.notificationRepository.update(
-            id,
-            updates
-        );
+        return await this.notificationRepository.update(id, updates);
     }
 
     /**

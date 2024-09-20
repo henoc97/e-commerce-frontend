@@ -1,11 +1,13 @@
 import { UserService } from '../../services/user.service';
 import { User } from '../../../domain/entities/user.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for removeSubsite.
  * This class encapsulates the business logic for removeSubsite.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class RemoveSubsiteUser {
     constructor(private readonly service: UserService) {}
 

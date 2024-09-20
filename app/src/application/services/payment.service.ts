@@ -1,11 +1,13 @@
-import { IPaymentRepository } from '../../domain/repositories/payment.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IPaymentRepository } from '../../domain/repositories/payment.repository';
+import { IPaymentRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Payment } from '../../domain/entities/payment.entity';
-import { PaymentStatus } from '../../domain/enums/payment-status.enum';
 
 /**
  * Service class for handling Payment-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class PaymentService {
     /**
      * Constructor for PaymentService.
@@ -13,7 +15,10 @@ export class PaymentService {
      *
      * @param paymentRepository - The repository that handles Payment data operations.
      */
-    constructor(private readonly paymentRepository: IPaymentRepository) {}
+    constructor(
+        @inject(IPaymentRepositoryToken)
+        private readonly paymentRepository: IPaymentRepository
+    ) {}
 
     /**
      * Service method for create.

@@ -1,10 +1,12 @@
 import { RefundService } from '../../services/refund.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for remove.
  * This class encapsulates the business logic for remove.
  * It interacts with the Refund service to perform operations on the refund repository.
  */
+@injectable()
 export class RemoveRefund {
     constructor(private readonly service: RefundService) {}
 

@@ -1,10 +1,12 @@
 import { ReviewService } from '../../services/review.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getAverageRating.
  * This class encapsulates the business logic for getAverageRating.
  * It interacts with the Review service to perform operations on the review repository.
  */
+@injectable()
 export class GetAverageRatingReview {
     constructor(private readonly service: ReviewService) {}
 

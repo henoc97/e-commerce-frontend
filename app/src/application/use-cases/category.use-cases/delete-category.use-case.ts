@@ -1,10 +1,12 @@
 import { CategoryService } from '../../services/category.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for delete.
  * This class encapsulates the business logic for delete.
  * It interacts with the Category service to perform operations on the category repository.
  */
+@injectable()
 export class DeleteCategory {
     constructor(private readonly service: CategoryService) {}
 

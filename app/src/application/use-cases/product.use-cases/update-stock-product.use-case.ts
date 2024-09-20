@@ -1,11 +1,13 @@
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../../domain/entities/product.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for updateStock.
  * This class encapsulates the business logic for updateStock.
  * It interacts with the Product service to perform operations on the product repository.
  */
+@injectable()
 export class UpdateStockProduct {
     constructor(private readonly service: ProductService) {}
 

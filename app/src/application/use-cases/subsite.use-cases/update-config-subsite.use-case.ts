@@ -1,11 +1,13 @@
 import { SubsiteService } from '../../services/subsite.service';
 import { Subsite } from '../../../domain/entities/subsite.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for updateConfig.
  * This class encapsulates the business logic for updateConfig.
  * It interacts with the Subsite service to perform operations on the subsite repository.
  */
+@injectable()
 export class UpdateConfigSubsite {
     constructor(private readonly service: SubsiteService) {}
 

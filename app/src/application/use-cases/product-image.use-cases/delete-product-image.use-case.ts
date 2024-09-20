@@ -1,10 +1,12 @@
 import { ProductImageService } from '../../services/product-image.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for delete.
  * This class encapsulates the business logic for delete.
  * It interacts with the ProductImage service to perform operations on the productimage repository.
  */
+@injectable()
 export class DeleteProductImage {
     constructor(private readonly service: ProductImageService) {}
 

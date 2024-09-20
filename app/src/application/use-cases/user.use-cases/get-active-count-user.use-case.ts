@@ -1,10 +1,12 @@
 import { UserService } from '../../services/user.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getActiveCount.
  * This class encapsulates the business logic for getActiveCount.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class GetActiveCountUser {
     constructor(private readonly service: UserService) {}
 

@@ -2,11 +2,13 @@ import { CartService } from '../../services/cart.service';
 import { Cart } from '../../../domain/entities/cart.entity';
 import { CartItem } from '@/app/src/domain/entities/cart-item.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for addItem.
  * This class encapsulates the business logic for addItem.
  * It interacts with the Cart service to perform operations on the cart repository.
  */
+@injectable()
 export class AddItemCart {
     constructor(private readonly service: CartService) {}
 

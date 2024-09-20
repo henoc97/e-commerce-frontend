@@ -1,10 +1,12 @@
 import { OrderItemService } from '../../services/order-item.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for calculateTotalPrice.
  * This class encapsulates the business logic for calculateTotalPrice.
  * It interacts with the OrderItem service to perform operations on the orderitem repository.
  */
+@injectable()
 export class CalculateTotalPriceOrderItem {
     constructor(private readonly service: OrderItemService) {}
 

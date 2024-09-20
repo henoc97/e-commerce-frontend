@@ -1,10 +1,12 @@
 import { VendorService } from '../../services/vendor.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for delete.
  * This class encapsulates the business logic for delete.
  * It interacts with the Vendor service to perform operations on the vendor repository.
  */
+@injectable()
 export class DeleteVendor {
     constructor(private readonly service: VendorService) {}
 

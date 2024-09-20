@@ -1,11 +1,13 @@
 import { SubscriptionService } from '../../services/subscription.service';
 import { Subscription } from '../../../domain/entities/subscription.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for create.
  * This class encapsulates the business logic for create.
  * It interacts with the Subscription service to perform operations on the subscription repository.
  */
+@injectable()
 export class CreateSubscription {
     constructor(private readonly service: SubscriptionService) {}
 

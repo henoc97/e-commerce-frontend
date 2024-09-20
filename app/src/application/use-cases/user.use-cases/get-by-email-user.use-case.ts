@@ -1,11 +1,13 @@
 import { UserService } from '../../services/user.service';
 import { User } from '../../../domain/entities/user.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getByEmail.
  * This class encapsulates the business logic for getByEmail.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class GetByEmailUser {
     constructor(private readonly service: UserService) {}
 

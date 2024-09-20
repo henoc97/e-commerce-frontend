@@ -1,4 +1,6 @@
-import { IVendorRepository } from '../../domain/repositories/vendor.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IVendorRepository } from '../../domain/repositories/vendor.repository';
+import { IVendorRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { Vendor } from '../../domain/entities/vendor.entity';
 import { Product } from '../../domain/entities/product.entity';
 import { Subscription } from '../../domain/entities/subscription.entity';
@@ -8,6 +10,7 @@ import { Shop } from '../../domain/entities/shop.entity';
  * Service class for handling Vendor-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class VendorService {
     /**
      * Constructor for VendorService.
@@ -15,7 +18,10 @@ export class VendorService {
      *
      * @param vendorRepository - The repository that handles Vendor data operations.
      */
-    constructor(private readonly vendorRepository: IVendorRepository) {}
+    constructor(
+        @inject(IVendorRepositoryToken)
+        private readonly vendorRepository: IVendorRepository
+    ) {}
 
     /**
      * Service method for create.

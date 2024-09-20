@@ -15,24 +15,24 @@ import { Notification } from './notification.entity';
  * The User entity contains personal and related information about a user, including their profile, addresses, orders, and more.
  */
 export interface User {
-  /** Unique identifier for the user */
-  id: number;
+    /** Unique identifier for the user */
+    id: number;
 
-  /** Email address of the user */
-  email: string;
+    /** Email address of the user */
+    email: string;
 
-  /** Password for the user account */
-  password: string;
+    /** Password for the user account */
+    password: string;
 
-  /** Optional name of the user */
-  name?: string;
+    /** Optional name of the user */
+    name?: string;
 
-  /** Role of the user (e.g., CLIENT, ADMIN) */
-  role: UserRole;
+    /** Role of the user (e.g., CLIENT, ADMIN) */
+    role: UserRole;
 
-  /** Date when the user was created */
-  createdAt: string;
+    /** Date when the user was created */
+    createdAt: string;
 
-  /** Date when the user was last updated */
-  updatedAt: string;
+    /** Date when the user was last updated */
+    updatedAt: string;
 }

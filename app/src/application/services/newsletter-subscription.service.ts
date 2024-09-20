@@ -1,10 +1,13 @@
-import { INewsletterSubscriptionRepository } from '../../domain/repositories/newsletter-subscription.repository';
+import { injectable, inject } from 'tsyringe';
+import type { INewsletterSubscriptionRepository } from '../../domain/repositories/newsletter-subscription.repository';
+import { INewsletterSubscriptionRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { NewsletterSubscription } from '../../domain/entities/newsletter-subscription.entity';
 
 /**
  * Service class for handling NewsletterSubscription-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class NewsletterSubscriptionService {
     /**
      * Constructor for NewsletterSubscriptionService.
@@ -13,20 +16,9 @@ export class NewsletterSubscriptionService {
      * @param newsletterSubscriptionRepository - The repository that handles NewsletterSubscription data operations.
      */
     constructor(
+        @inject(INewsletterSubscriptionRepositoryToken)
         private readonly newsletterSubscriptionRepository: INewsletterSubscriptionRepository
     ) {}
-
-    /**
-     * Service method for create.
-     * Calls the repository's create method.
-     * @param subscription - The NewsletterSubscription required by the repository method.
-     * @returns Promise<NewsletterSubscription> - The result from the repository method.
-     */
-    public async create(
-        subscription: NewsletterSubscription
-    ): Promise<NewsletterSubscription> {
-        return await this.newsletterSubscriptionRepository.create(subscription);
-    }
 
     /**
      * Service method for getById.

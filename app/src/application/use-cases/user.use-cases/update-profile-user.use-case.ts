@@ -2,11 +2,13 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../../domain/entities/user.entity';
 import { UserProfile } from '../../../domain/entities/user-profile.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for updateProfile.
  * This class encapsulates the business logic for updateProfile.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class UpdateProfileUser {
     constructor(private readonly service: UserService) {}
 

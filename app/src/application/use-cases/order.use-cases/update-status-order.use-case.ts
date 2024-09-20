@@ -2,11 +2,13 @@ import { OrderService } from '../../services/order.service';
 import { Order } from '../../../domain/entities/order.entity';
 import { OrderStatus } from '@/app/src/domain/enums/order-status.enum';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for updateStatus.
  * This class encapsulates the business logic for updateStatus.
  * It interacts with the Order service to perform operations on the order repository.
  */
+@injectable()
 export class UpdateStatusOrder {
     constructor(private readonly service: OrderService) {}
 

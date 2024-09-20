@@ -2,11 +2,13 @@ import { PaymentService } from '../../services/payment.service';
 import { Payment } from '../../../domain/entities/payment.entity';
 import { PaymentStatus } from '../../../domain/enums/payment-status.enum';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getByStatus.
  * This class encapsulates the business logic for getByStatus.
  * It interacts with the Payment service to perform operations on the payment repository.
  */
+@injectable()
 export class GetByStatusPayment {
     constructor(private readonly service: PaymentService) {}
 

@@ -1,11 +1,13 @@
 import { AuditLog } from '../../../domain/entities/audit-log.entity';
 import { UserService } from '../../services/user.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for createAuditLog.
  * This class encapsulates the business logic for createAuditLog.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class CreateAuditLogUser {
     constructor(private readonly service: UserService) {}
 

@@ -1,11 +1,13 @@
 import { OrderService } from '../../services/order.service';
 import { Order } from '../../../domain/entities/order.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for addRefund.
  * This class encapsulates the business logic for addRefund.
  * It interacts with the Order service to perform operations on the order repository.
  */
+@injectable()
 export class AddRefundOrder {
     constructor(private readonly service: OrderService) {}
 

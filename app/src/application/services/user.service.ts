@@ -1,21 +1,21 @@
-import { IUserRepository } from '../../domain/repositories/user.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IUserRepository } from '../../domain/repositories/user.repository';
+import { IUserRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { User } from '../../domain/entities/user.entity';
-import { UserRole } from '../../domain/enums/user-role.enum';
 import { Address } from '../../domain/entities/address.entity';
-import { Ticket } from '../../domain/entities/ticket.entity';
-import { Cart } from '../../domain/entities/cart.entity';
-import { Review } from '../../domain/entities/review.entity';
-import { Subsite } from '../../domain/entities/subsite.entity';
-import { UserActivity } from '../../domain/entities/user-activity.entity';
-import { AuditLog } from '../../domain/entities/audit-log.entity';
 import { Order } from '../../domain/entities/order.entity';
 import { Notification } from '../../domain/entities/notification.entity';
-import { UserProfile } from '../../domain/entities/user-profile.entity';
+import { Subsite } from '../../domain/entities/subsite.entity';
+import { AuditLog } from '../../domain/entities/audit-log.entity';
+import { Review } from '../../domain/entities/review.entity';
+import { Cart } from '../../domain/entities/cart.entity';
+import { Ticket } from '../../domain/entities/ticket.entity';
 
 /**
  * Service class for handling User-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class UserService {
     /**
      * Constructor for UserService.
@@ -23,7 +23,10 @@ export class UserService {
      *
      * @param userRepository - The repository that handles User data operations.
      */
-    constructor(private readonly userRepository: IUserRepository) {}
+    constructor(
+        @inject(IUserRepositoryToken)
+        private readonly userRepository: IUserRepository
+    ) {}
 
     /**
      * Service method for create.

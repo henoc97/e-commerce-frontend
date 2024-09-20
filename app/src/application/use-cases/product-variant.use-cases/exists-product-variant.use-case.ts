@@ -1,10 +1,12 @@
 import { ProductVariantService } from '../../services/product-variant.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for exists.
  * This class encapsulates the business logic for exists.
  * It interacts with the ProductVariant service to perform operations on the productvariant repository.
  */
+@injectable()
 export class ExistsProductVariant {
     constructor(private readonly service: ProductVariantService) {}
 

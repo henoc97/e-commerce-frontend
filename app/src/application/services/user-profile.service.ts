@@ -1,10 +1,13 @@
-import { IUserProfileRepository } from '../../domain/repositories/user-profile.repository';
+import { injectable, inject } from 'tsyringe';
+import type { IUserProfileRepository } from '../../domain/repositories/user-profile.repository';
+import { IUserProfileRepositoryToken } from '../../infrastructure/repositories/config/tokens';
 import { UserProfile } from '../../domain/entities/user-profile.entity';
 
 /**
  * Service class for handling UserProfile-related operations.
  * It provides methods that call the underlying repository.
  */
+@injectable()
 export class UserProfileService {
     /**
      * Constructor for UserProfileService.
@@ -13,6 +16,7 @@ export class UserProfileService {
      * @param userProfileRepository - The repository that handles UserProfile data operations.
      */
     constructor(
+        @inject(IUserProfileRepositoryToken)
         private readonly userProfileRepository: IUserProfileRepository
     ) {}
 
@@ -47,10 +51,7 @@ export class UserProfileService {
         id: number,
         updates: Partial<UserProfile>
     ): Promise<UserProfile> {
-        return await this.userProfileRepository.update(
-            id,
-            updates
-        );
+        return await this.userProfileRepository.update(id, updates);
     }
 
     /**
@@ -184,8 +185,6 @@ export class UserProfileService {
     public async findMatches(
         criteria: Partial<UserProfile>
     ): Promise<UserProfile[]> {
-        return await this.userProfileRepository.findMatches(
-            criteria
-        );
+        return await this.userProfileRepository.findMatches(criteria);
     }
 }

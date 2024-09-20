@@ -1,10 +1,12 @@
 import { ShopService } from '../../services/shop.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getTotalSales.
  * This class encapsulates the business logic for getTotalSales.
  * It interacts with the Shop service to perform operations on the shop repository.
  */
+@injectable()
 export class GetTotalSalesShop {
     constructor(private readonly service: ShopService) {}
 

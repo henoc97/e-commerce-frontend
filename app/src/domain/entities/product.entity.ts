@@ -12,53 +12,53 @@ import { OrderItem } from './order-item.entity';
  * Represents a product entity in the system.
  */
 export interface Product {
-  /**
-   * Unique identifier for the product.
-   */
-  id: number;
+    /**
+     * Unique identifier for the product.
+     */
+    id: number;
 
-  /**
-   * The name of the product.
-   */
-  name: string;
+    /**
+     * The name of the product.
+     */
+    name: string;
 
-  /**
-   * Optional description of the product.
-   */
-  description?: string;
+    /**
+     * Optional description of the product.
+     */
+    description?: string;
 
-  /**
-   * The price of the product.
-   */
-  price: number;
+    /**
+     * The price of the product.
+     */
+    price: number;
 
-  /**
-   * The ID of the category to which the product belongs.
-   */
-  categoryId: number;
+    /**
+     * The ID of the category to which the product belongs.
+     */
+    categoryId: number;
 
-  /**
-   * The quantity of the product available in stock.
-   */
-  stock: number;
+    /**
+     * The quantity of the product available in stock.
+     */
+    stock: number;
 
-  /**
-   * The ID of the vendor associated with the product (optional).
-   */
-  vendorId?: number;
+    /**
+     * The ID of the vendor associated with the product (optional).
+     */
+    vendorId?: number;
 
-  /**
-   * The ID of the shop where the product is listed.
-   */
-  shopId: number;
+    /**
+     * The ID of the shop where the product is listed.
+     */
+    shopId: number;
 
-  /**
-   * The date and time when the product was created.
-   */
-  createdAt: string;
+    /**
+     * The date and time when the product was created.
+     */
+    createdAt: string;
 
-  /**
-   * The date and time when the product was last updated.
-   */
-  updatedAt: string;
+    /**
+     * The date and time when the product was last updated.
+     */
+    updatedAt: string;
 }

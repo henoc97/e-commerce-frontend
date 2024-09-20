@@ -1,11 +1,13 @@
 import { ReviewService } from '../../services/review.service';
 import { Review } from '../../../domain/entities/review.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getById.
  * This class encapsulates the business logic for getById.
  * It interacts with the Review service to perform operations on the review repository.
  */
+@injectable()
 export class GetByIdReview {
     constructor(private readonly service: ReviewService) {}
 

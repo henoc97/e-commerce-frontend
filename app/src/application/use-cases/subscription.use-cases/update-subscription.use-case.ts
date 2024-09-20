@@ -1,11 +1,13 @@
 import { SubscriptionService } from '../../services/subscription.service';
 import { Subscription } from '../../../domain/entities/subscription.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for update.
  * This class encapsulates the business logic for update.
  * It interacts with the Subscription service to perform operations on the subscription repository.
  */
+@injectable()
 export class UpdateSubscription {
     constructor(private readonly service: SubscriptionService) {}
 

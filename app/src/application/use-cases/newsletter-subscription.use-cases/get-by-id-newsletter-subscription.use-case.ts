@@ -1,11 +1,13 @@
 import { NewsletterSubscriptionService } from '../../services/newsletter-subscription.service';
 import { NewsletterSubscription } from '../../../domain/entities/newsletter-subscription.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getById.
  * This class encapsulates the business logic for getById.
  * It interacts with the NewsletterSubscription service to perform operations on the newslettersubscription repository.
  */
+@injectable()
 export class GetByIdNewsletterSubscription {
     constructor(private readonly service: NewsletterSubscriptionService) {}
 

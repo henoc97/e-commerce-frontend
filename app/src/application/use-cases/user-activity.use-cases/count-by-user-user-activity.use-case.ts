@@ -1,10 +1,12 @@
 import { UserActivityService } from '../../services/user-activity.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for countByUser.
  * This class encapsulates the business logic for countByUser.
  * It interacts with the UserActivity service to perform operations on the useractivity repository.
  */
+@injectable()
 export class CountByUserUserActivity {
     constructor(private readonly service: UserActivityService) {}
 

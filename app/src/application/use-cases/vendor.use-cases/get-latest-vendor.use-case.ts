@@ -1,11 +1,13 @@
 import { VendorService } from '../../services/vendor.service';
 import { Vendor } from '../../../domain/entities/vendor.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getLatest.
  * This class encapsulates the business logic for getLatest.
  * It interacts with the Vendor service to perform operations on the vendor repository.
  */
+@injectable()
 export class GetLatestVendor {
     constructor(private readonly service: VendorService) {}
 

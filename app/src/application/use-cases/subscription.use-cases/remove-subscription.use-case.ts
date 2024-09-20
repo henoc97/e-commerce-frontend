@@ -1,10 +1,12 @@
 import { SubscriptionService } from '../../services/subscription.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for remove.
  * This class encapsulates the business logic for remove.
  * It interacts with the Subscription service to perform operations on the subscription repository.
  */
+@injectable()
 export class RemoveSubscription {
     constructor(private readonly service: SubscriptionService) {}
 

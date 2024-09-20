@@ -1,11 +1,13 @@
 import { Review } from '../../../domain/entities/review.entity';
 import { UserService } from '../../services/user.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getReviews.
  * This class encapsulates the business logic for getReviews.
  * It interacts with the User service to perform operations on the user repository.
  */
+@injectable()
 export class GetReviewsUser {
     constructor(private readonly service: UserService) {}
 

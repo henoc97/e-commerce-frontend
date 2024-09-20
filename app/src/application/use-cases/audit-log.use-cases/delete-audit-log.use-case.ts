@@ -1,10 +1,12 @@
 import { AuditLogService } from '../../services/audit-log.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for delete.
  * This class encapsulates the business logic for delete.
  * It interacts with the AuditLog service to perform operations on the auditlog repository.
  */
+@injectable()
 export class DeleteAuditLog {
     constructor(private readonly service: AuditLogService) {}
 

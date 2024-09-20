@@ -1,10 +1,12 @@
 import { SubscriptionService } from '../../services/subscription.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for countByVendor.
  * This class encapsulates the business logic for countByVendor.
  * It interacts with the Subscription service to perform operations on the subscription repository.
  */
+@injectable()
 export class CountByVendorSubscription {
     constructor(private readonly service: SubscriptionService) {}
 

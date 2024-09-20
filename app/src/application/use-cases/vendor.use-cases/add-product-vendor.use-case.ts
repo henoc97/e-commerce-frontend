@@ -2,11 +2,13 @@ import { VendorService } from '../../services/vendor.service';
 import { Vendor } from '../../../domain/entities/vendor.entity';
 import { Product } from '../../../domain/entities/product.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for addProduct.
  * This class encapsulates the business logic for addProduct.
  * It interacts with the Vendor service to perform operations on the vendor repository.
  */
+@injectable()
 export class AddProductVendor {
     constructor(private readonly service: VendorService) {}
 

@@ -1,11 +1,13 @@
 import { Category } from '../../../domain/entities/category.entity';
 import { ShopService } from '../../services/shop.service';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for listCategories.
  * This class encapsulates the business logic for listCategories.
  * It interacts with the Shop service to perform operations on the shop repository.
  */
+@injectable()
 export class ListCategoriesShop {
     constructor(private readonly service: ShopService) {}
 

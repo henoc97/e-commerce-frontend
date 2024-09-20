@@ -1,11 +1,13 @@
 import { VendorService } from '../../services/vendor.service';
 import { Vendor } from '../../../domain/entities/vendor.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for create.
  * This class encapsulates the business logic for create.
  * It interacts with the Vendor service to perform operations on the vendor repository.
  */
+@injectable()
 export class CreateVendor {
     constructor(private readonly service: VendorService) {}
 

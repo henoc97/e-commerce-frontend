@@ -1,11 +1,13 @@
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../../domain/entities/category.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for getChildren.
  * This class encapsulates the business logic for getChildren.
  * It interacts with the Category service to perform operations on the category repository.
  */
+@injectable()
 export class GetChildrenCategory {
     constructor(private readonly service: CategoryService) {}
 

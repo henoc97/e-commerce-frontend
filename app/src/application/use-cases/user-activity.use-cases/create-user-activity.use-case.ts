@@ -1,11 +1,13 @@
 import { UserActivityService } from '../../services/user-activity.service';
 import { UserActivity } from '../../../domain/entities/user-activity.entity';
 
+import { injectable } from 'tsyringe';
 /**
  * Use case class for create.
  * This class encapsulates the business logic for create.
  * It interacts with the UserActivity service to perform operations on the useractivity repository.
  */
+@injectable()
 export class CreateUserActivity {
     constructor(private readonly service: UserActivityService) {}
 
