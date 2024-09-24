@@ -21,7 +21,7 @@ const config: Config = {
         offwhite: '#F9FAFB',
         lightgray: '#F3F4F6',
         bluishgray: '#6B7280',
-      },
+      }
     },
   },
   plugins: [],
