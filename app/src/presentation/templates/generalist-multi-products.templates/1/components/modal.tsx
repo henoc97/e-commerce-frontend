@@ -1,26 +1,27 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from 'next/image'
-import React from "react";
-
-
+import { useState } from 'react';
+import Image from 'next/image';
+import React from 'react';
+import CloseIcon from './buttons.components/close-button';
+import SubmitButton from './buttons.components/submit-button';
+import Input from './input.components/input';
 
 export default function Modal() {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleModal = () => {
         setIsOpen(!isOpen);
-    }
+    };
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
         // Logic
-    }
+    };
 
     return (
-        <React.Fragment>
-            <button 
+        <>
+            <button
                 className="bg-blue-500 text-white py-2 px-4 rounded justify-top-center"
                 onClick={toggleModal}
             >
@@ -32,13 +33,11 @@ export default function Modal() {
                     role="dialog"
                     aria-labelledby="modal-title"
                     arial-modal="true"
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+                    className="fixed inset-0 z-50 flex items-center justify-center p-5 bg-charcoalgrayP1 bg-opacity-30"
                 >
-                    <div className="max-w-2xl relative bg-white rounded-lg shadow-lg p-0 max-w-md w-full overflow-hidden">
-                        
+                    <div className="max-w-xl relative bg-white rounded-lg shadow-lg p-0 max-w-md w-full overflow-hidden">
                         {/* Main Content */}
-                        <div className="flex h-full">
-
+                        <div className="flex h-full flex-col sm:flex-row">
                             {/* Image secvtion*/}
                             <div className="w-1/2 h-auuto">
                                 <Image
@@ -47,52 +46,44 @@ export default function Modal() {
                                     width={400}
                                     height={400}
                                     objectFit="cover"
-                                    className="w-full h-full"
+                                    className="w-full h-full hidden sm:block"
                                 />
                             </div>
 
-                            <div className="w-1/2 p-6 flex flex-col justify-center relative">
-
+                            <div className="sm:w-1/2 p-6 flex flex-col justify-center relative">
                                 {/* Button for close modal */}
-                                <button
-                                    className="absolute top-3 right-3 text-gray-400 hover: text-gray-600"
-                                    onClick={toggleModal}
-                                >
-                                    <i className='bx bx-x text-2xl'></i>
-                                </button>
+                                <CloseIcon onClick={toggleModal} />
 
                                 {/* Newsletter content */}
                                 <div className="text-center">
-                                    <h3 id="modal-title" className="text-xl font semibold mb-2">
-                                        <b>S'abonner à la newslette</b>
+                                    <h3
+                                        id="modal-title"
+                                        className="text-xl font semibold mb-2"
+                                    >
+                                        <b>S'abonner à la Newsletter</b>
                                     </h3>
                                     <p className="text-gray-500 mb-4">
-                                        Abonnez-vous à <b>Henoc-Shop</b> pour recevoir les derniers produits et les mises à jour des réductions.
+                                        Abonnez-vous à <b>Henoc-Shop</b> pour
+                                        recevoir les derniers produits et les
+                                        mises à jour des réductions.
                                     </p>
                                 </div>
 
                                 {/* Form */}
                                 <form onSubmit={handleSubmit}>
-                                    <input
+                                    <Input
                                         type="email"
                                         name="email"
-                                        className="p-2 border border-black rounded-md mb-4 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         placeholder="Adresse email"
-                                        required
+                                        required={true}
                                     />
-                                    <button
-                                        type="submit"
-                                        className="bg-blue-500 text-white py-2 px-4 rounded-md w-full hover:bg-blue-600 transition-colors duration-300"
-                                    >
-                                        Souscrire
-                                    </button>
+                                    <SubmitButton label="Souscrire" />
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             )}
-        </React.Fragment>
+        </>
     );
 }
-

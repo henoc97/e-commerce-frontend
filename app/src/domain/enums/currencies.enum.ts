@@ -10,5 +10,5 @@ export enum Currency {
     CHF = 'CHF',
     INR = 'INR',
     BRL = 'BRL',
-    ZAR = 'ZAR'
+    ZAR = 'ZAR',
 }
