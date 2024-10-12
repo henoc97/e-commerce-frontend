@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { MenuItemProps } from './navigation-menu-item';
+import NavMenuItem, { MenuItemProps } from './navigation-menu-item';
 
 const menuItems: MenuItemProps[] = [
     { href: '#', label: 'Home' },
@@ -7,19 +7,20 @@ const menuItems: MenuItemProps[] = [
     { href: '#', label: 'About Us' },
     { href: '#', label: 'Contact' },
     { href: '#', label: 'Blog' },
-]
+];
 
 const NavMenu: React.FC = () => {
     return (
         <nav className="flex items-center space-x-6 text-sm font-medium">
             {menuItems.map((menuItem) => (
-                <Link href={menuItem.href} key={menuItem.label}>
-                    {menuItem.label}
-                </Link>
+                <NavMenuItem
+                    label={menuItem.label}
+                    href={menuItem.href}
+                    key={menuItem.label}
+                />
             ))}
         </nav>
     );
 };
-
 
 export default NavMenu;

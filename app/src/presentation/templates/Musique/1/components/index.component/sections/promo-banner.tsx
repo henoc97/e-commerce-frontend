@@ -1,3 +1,4 @@
+import { Button } from "../../ui/button";
 
 const PromoBanner: React.FC = () => {
     return (

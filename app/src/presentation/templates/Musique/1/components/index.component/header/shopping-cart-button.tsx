@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart } from 'lucide-react';
+import { Button } from '../../ui/button';
 
 const ShoppingCartButton: React.FC = () => {
     return (

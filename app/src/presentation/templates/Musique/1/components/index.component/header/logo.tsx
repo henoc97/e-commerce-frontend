@@ -5,7 +5,7 @@ const Logo: React.FC = () => {
     return (
         <Link className="mr-6 flex items-center space-x-2" href="/">
             <Image
-                src="/placeholder.svg"
+                src="/assets/images/logo/music-logo.jpg"
                 alt="Musicland Logo"
                 width={32}
                 height={32}

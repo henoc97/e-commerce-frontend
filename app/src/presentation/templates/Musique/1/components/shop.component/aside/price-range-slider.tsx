@@ -1,9 +1,11 @@
+"use client"
+
 import { useState } from 'react';
 import { Slider } from '../../ui/sidebar';
 
 const PriceRangeSlider: React.FC = () => {
     const [priceRange, setPriceRange] = useState([0, 1000]);
-    
+
     return (
         <div>
             <h2 className="text-lg font-semibold mb-2">Price Range</h2>

@@ -10,7 +10,7 @@ const ShopProducts: React.FC = () => {
                     name={''}
                     price={0}
                     description={''}
-                    images={[]}
+                    images={["noo"]}
                 />
             ))}
         </div>

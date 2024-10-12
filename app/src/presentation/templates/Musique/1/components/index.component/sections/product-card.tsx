@@ -12,9 +12,9 @@ export interface ProductProps {
 
 const ProductCard: React.FC<ProductProps> = ({ id, name, price, description, images}) => {
     return (
-        <Card key={id} className="overflow-hidden">
+        <Card className="overflow-hidden">
             <Image
-                src={`${images[0]}?text=Product+${name}`}
+                src={`/${images[0]}.jpg?text=Product+${name}`}
                 alt={`Product ${description}`}
                 width={300}
                 height={200}
