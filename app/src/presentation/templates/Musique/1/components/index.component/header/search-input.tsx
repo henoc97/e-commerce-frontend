@@ -1,6 +1,5 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { Search } from 'lucide-react';
+import { Input } from '../../ui/input';
 
 const SearchInput: React.FC = () => {
     return (

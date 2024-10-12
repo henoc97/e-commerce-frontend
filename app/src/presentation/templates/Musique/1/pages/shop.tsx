@@ -1,20 +1,10 @@
 import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ShoppingCart, Search, ChevronDown, Star } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select';
-import { Slider } from '@/components/ui/slider';
+import Categories from '../components/shop.component/aside/categories';
+import PriceRangeSlider from '../components/shop.component/aside/price-range-slider';
+import ShopProducts from '../components/shop.component/section/shop-products';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import { Button } from '../components/ui/button';
 
 export default function Shop() {
     const [priceRange, setPriceRange] = useState([0, 1000]);
@@ -30,48 +20,8 @@ export default function Shop() {
                     <div className="flex flex-col md:flex-row gap-8">
                         <aside className="w-full md:w-1/4">
                             <div className="space-y-6">
-                                <div>()
-                                    <h2 className="text-lg font-semibold mb-2">
-                                        Categories
-                                    </h2>
-                                    <div className="space-y-2">
-                                        {[
-                                            'Guitars',
-                                            'Drums',
-                                            'Keyboards',
-                                            'Accessories',
-                                        ].map((category) => (
-                                            <div
-                                                key={category}
-                                                className="flex items-center"
-                                            >
-                                                <Checkbox id={category} />
-                                                <label
-                                                    htmlFor={category}
-                                                    className="ml-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                                >
-                                                    {category}
-                                                </label>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div>
-                                    <h2 className="text-lg font-semibold mb-2">
-                                        Price Range
-                                    </h2>
-                                    <Slider
-                                        defaultValue={[0, 1000]}
-                                        max={1000}
-                                        step={1}
-                                        value={priceRange}
-                                        onValueChange={setPriceRange}
-                                    />
-                                    <div className="flex justify-between mt-2">
-                                        <span>${priceRange[0]}</span>
-                                        <span>${priceRange[1]}</span>
-                                    </div>
-                                </div>
+                                <Categories />
+                                <PriceRangeSlider />
                             </div>
                         </aside>
                         <div className="w-full md:w-3/4">
@@ -99,30 +49,7 @@ export default function Shop() {
                                     </SelectContent>
                                 </Select>
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {[...Array(12)].map((_, i) => (
-                                    <Card key={i} className="overflow-hidden">
-                                        <Image
-                                            src={`/placeholder.svg?text=Product+${i + 1}`}
-                                            alt={`Product ${i + 1}`}
-                                            width={300}
-                                            height={200}
-                                            className="object-cover w-full"
-                                        />
-                                        <CardContent className="p-4">
-                                            <h3 className="font-semibold text-lg mb-2">
-                                                Product Name
-                                            </h3>
-                                            <p className="text-[#5B4B8A] font-bold mb-2">
-                                                $199.99
-                                            </p>
-                                            <Button className="w-full bg-[#00B2A9] text-white">
-                                                Add to Cart
-                                            </Button>
-                                        </CardContent>
-                                    </Card>
-                                ))}
-                            </div>
+                            <ShopProducts />
                             <div className="flex justify-center mt-8">
                                 <Button variant="outline" className="mx-1">
                                     Previous

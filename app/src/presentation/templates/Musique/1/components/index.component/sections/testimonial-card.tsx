@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { Star } from '../../ui/star';
+import { Card } from '../../ui/card';
 
 export interface TestimonialProps {
     testimonial: string;
@@ -9,7 +11,7 @@ export interface TestimonialProps {
 
 const TestimonialCard: React.FC<TestimonialProps> = ({testimonial, stars, user, image}) => {
     return (
-        <div key={testimonial} className="p-6">
+        <Card key={testimonial} className="p-6">
             <div className="flex items-center space-x-4 mb-4">
                 <Image
                     src={`${image}?text=User+${testimonial}`}
@@ -34,7 +36,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({testimonial, stars, user, 
                 "Musicland has an incredible selection and top-notch customer
                 service. I couldn't be happier with my purchase!"
             </p>
-        </div>
+        </Card>
     );
 };
 

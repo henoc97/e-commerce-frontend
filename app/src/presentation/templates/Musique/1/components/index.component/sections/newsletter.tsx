@@ -1,3 +1,5 @@
+import { Button } from "../../ui/button";
+import { Input } from "../../ui/input";
 
 const NewsletterSection: React.FC = () => {
     return (

@@ -1,19 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import {
-    ShoppingCart,
-    Search,
-    ChevronDown,
-    Star,
-    ArrowRight,
-} from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
-import NavMenu from '../components/navigation-menu';
-import Logo from '../components/logo';
-import SearchInput from '../components/search-input';
+import NavMenu from '../components/index.component/header/navigation-menu';
+import Logo from '../components/index.component/header/logo';
+import SearchInput from '../components/index.component/header/search-input';
 import ShoppingCartButton from '../components/index.component/header/shopping-cart-button';
 import FeaturedProductsSection from '../components/index.component/sections/featured-products-section';
 import PromoBanner from '../components/index.component/sections/promo-banner';
@@ -23,6 +12,7 @@ import ShopLink from '../components/index.component/footer/shop-links';
 import AboutLink from '../components/index.component/footer/about-links';
 import SupportLink from '../components/index.component/footer/support-links';
 import ConnectLink from '../components/index.component/footer/shop-links copy 3';
+import { Button } from '../components/ui/button';
 
 export default function Home() {
     return (
