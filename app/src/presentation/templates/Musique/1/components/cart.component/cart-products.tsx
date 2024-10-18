@@ -1,8 +1,8 @@
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import Image from 'next/image';
-import { Card, CardContent } from '../ui/card';
-import { Button } from '../ui/button';
-import { toast } from '../ui/use-toast';
+import { Card, CardContent } from '../../../../../components/ui/card';
+import { Button } from '../../../../../components/ui/button';
+import { toast } from '../../../../../components/ui/use-toast';
 
 interface CartProductsProps {
     cartItems: CartItem[];
@@ -42,7 +42,7 @@ const CartProducts: React.FC<CartProductsProps> = ({ cartItems, setCartItems }) 
                 <Card key={item.id} className="mb-6">
                     <CardContent className="p-6 flex items-center">
                         <Image
-                            src='/assets/images/exemple.jpeg'
+                            src='/assets/images/guitar.jpg'
                             alt={item.name}
                             width={100}
                             height={100}
@@ -64,7 +64,9 @@ const CartProducts: React.FC<CartProductsProps> = ({ cartItems, setCartItems }) 
                                     <Minus className="h-4 w-4" />
                                 </Button>
                                 <span className="mx-2">{item.quantity}</span>
+
                                 <Button
+                                    
                                     variant="outline"
                                     size="icon"
                                     onClick={() => updateQuantity(item.id, item.quantity + 1)}

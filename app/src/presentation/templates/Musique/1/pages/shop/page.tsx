@@ -1,15 +1,13 @@
-import Header from '../components/index.component/header/header';
-import Footer from '../components/index.component/footer/footer';
-import Categories from '../components/shop.component/aside/categories';
-import PriceRangeSlider from '../components/shop.component/aside/price-range-slider';
-import ShopProducts from '../components/shop.component/section/shop-products';
-import SwitchProductsPages from '../components/shop.component/section/switch-products-pqges';
-import FilterSelector from '../components/shop.component/section/filter-selector';
+import Categories from '../../components/shop.component/aside/categories';
+import PriceRangeSlider from '../../components/shop.component/aside/price-range-slider';
+import ShopProducts from '../../components/shop.component/section/shop-products';
+import SwitchProductsPages from '../../components/shop.component/section/switch-products-pqges';
+import FilterSelector from '../../components/shop.component/section/filter-selector';
+import Layout from '../../components/layout';
 
 export default function Shop() {
     return (
-        <div className="flex flex-col min-h-screen bg-[#5B4B8A]">
-            <Header />
+        <Layout>
             <main className="flex-1 bg-white">
                 <div className="container px-4 md:px-6 py-8">
                     <h1 className="text-3xl font-bold mb-8">
@@ -35,7 +33,6 @@ export default function Shop() {
                     </div>
                 </div>
             </main>
-            <Footer />
-        </div>
+        </Layout>
     );
 }

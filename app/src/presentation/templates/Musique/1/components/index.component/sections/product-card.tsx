@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { Card, CardContent } from '../../ui/card';
-import { Button } from '../../ui/button';
+import { Card, CardContent } from '../../../../../../components/ui/card';
+import { Button } from '../../../../../../components/ui/button';
 
 export interface ProductProps {
     id: number;
@@ -12,13 +12,13 @@ export interface ProductProps {
 
 const ProductCard: React.FC<ProductProps> = ({ id, name, price, description, images}) => {
     return (
-        <Card className="overflow-hidden">
+        <Card key={id} className="overflow-hidden">
             <Image
-                src={`/${images[0]}.jpg?text=Product+${name}`}
+                src={`/assets/images/${images[0]}?text=Product+${name}`}
                 alt={`Product ${description}`}
                 width={300}
                 height={200}
-                className="object-cover w-full"
+                className="object-cover w-full pt-3"
             />
             <CardContent className="p-4">
                 <h3 className="font-semibold text-lg mb-2">{name}e</h3>

@@ -9,34 +9,35 @@ const products: ProductProps[] = [
         price: 9.99,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         images: [
-            '/placeholder.jpg',
-            '/placeholder.jpg',
-            '/placeholder.jpg',
+            '/guitar.jpg',
+            '/guitar.jpg',
+            '/guitar.jpg',
         ],
     },
     {
-        id: 1,
-        name: 'Product 1',
-        price: 9.99,
+        id: 2,
+        name: 'Product 2',
+        price: 19.99,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         images: [
-            '/placeholder.jpg',
-            '/placeholder.jpg',
-            '/placeholder.jpg',
+            '/guitar.jpg',
+            '/guitar.jpg',
+            '/guitar.jpg',
         ],
     },
     {
-        id: 1,
-        name: 'Product 1',
-        price: 9.99,
+        id: 3,
+        name: 'Product 3',
+        price: 29.99,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         images: [
-            '/placeholder.jpg',
-            '/placeholder.jpg',
-            '/placeholder.jpg',
+            '/guitar.jpg',
+            '/guitar.jpg',
+            '/guitar.jpg',
         ],
     },
 ]
+// ... code existant ...
 
 const FeaturedProductsSection: React.FC = () => {
     return (

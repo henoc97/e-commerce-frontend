@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import Footer from '../components/index.component/footer/footer';
-import Header from '../components/index.component/header/header';
-import OrderSummary from '../components/cart.component/order-summary';
-import CartProducts, { CartItem } from '../components/cart.component/cart-products';
+import OrderSummary from '../../components/cart.component/order-summary';
+import CartProducts, { CartItem } from '../../components/cart.component/cart-products';
+import Layout from '../../components/layout';
 
 
 
@@ -35,21 +34,18 @@ export default function Cart() {
   const [cartItems, setCartItems] = useState<CartItem[]>(_cartItems);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#5B4B8A]">
-      <Header />
+    <Layout>
       <main className="flex-1 bg-white">
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">Your Cart</h1>
             <div className="grid gap-10 md:grid-cols-3">
-              {/* Passer les props pour partager l'état avec les composants enfants */}
               <CartProducts cartItems={cartItems} setCartItems={setCartItems} />
               <OrderSummary cartItems={cartItems} />
             </div>
           </div>
         </section>
       </main>
-      <Footer />
-    </div>
+    </Layout>
   );
 }

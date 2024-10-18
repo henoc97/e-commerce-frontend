@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { Star } from '../../ui/star';
-import { Card } from '../../ui/card';
+import { Star } from '../../../../../../components/ui/star';
+import { Card } from '../../../../../../components/ui/card';
 
 export interface TestimonialProps {
     testimonial: string;
@@ -16,7 +16,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({
     image,
 }) => {
     return (
-        <Card key={testimonial} className="p-6">
+        <Card className="p-6">
             <div className="flex items-center space-x-4 mb-4">
                 <Image
                     src={`/placeholder.svg?text=User+${testimonial}`}

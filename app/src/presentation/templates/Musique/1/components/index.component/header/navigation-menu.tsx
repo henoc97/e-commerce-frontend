@@ -1,12 +1,12 @@
-import Link from 'next/link';
 import NavMenuItem, { MenuItemProps } from './navigation-menu-item';
 
+const path = "src/presentation/templates/Musique/1/pages"
 const menuItems: MenuItemProps[] = [
-    { href: '#', label: 'Home' },
-    { href: '#', label: 'Shop' },
-    { href: '#', label: 'About Us' },
-    { href: '#', label: 'Contact' },
-    { href: '#', label: 'Blog' },
+    { href: `${path}/`, label: 'Home' },
+    { href: `/shop`, label: 'Shop' },
+    { href: `/about`, label: 'About Us' },
+    { href: `/contact`, label: 'Contact' },
+    { href: `/blog`, label: 'Blog' },
 ];
 
 const NavMenu: React.FC = () => {

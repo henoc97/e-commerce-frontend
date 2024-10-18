@@ -1,4 +1,4 @@
-import { Checkbox } from '../../ui/checkbox';
+import { Checkbox } from '../../../../../../components/ui/checkbox';
 
 const Categories: React.FC = () => {
     return (

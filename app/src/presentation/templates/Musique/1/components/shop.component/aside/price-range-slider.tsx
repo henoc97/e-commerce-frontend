@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react';
-import { Slider } from '../../ui/sidebar';
+import { Slider } from '../../../../../../components/ui/sidebar';
 
 const PriceRangeSlider: React.FC = () => {
     const [priceRange, setPriceRange] = useState([0, 1000]);
