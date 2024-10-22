@@ -1,4 +1,3 @@
-import { Layout } from "lucide-react";
 import { useState } from "react";
 import { Card, CardContent } from "../../../../../components/ui/card";
 import { Textarea } from "../../../../../components/ui/textarea";
@@ -6,6 +5,7 @@ import { toast } from "../../../../../components/ui/use-toast";
 import OrderSummary from "../../components/order.component/order-summary";
 import ShippingMethod from "../../components/order.component/shipping-method";
 import ShippingInfo from "../../components/order.component/shipping-info";
+import Layout from "../../components/layout";
 
 
 interface OrderItem {

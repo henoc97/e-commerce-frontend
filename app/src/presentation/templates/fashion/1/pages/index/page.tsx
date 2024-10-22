@@ -8,7 +8,7 @@ import { useTheme } from "next-themes"
 import { Card, CardContent } from "@/app/src/presentation/components/ui/card"
 import { Button } from "@/app/src/presentation/components/ui/button"
 import { Input } from "@/app/src/presentation/components/ui/input"
-import { ThemeSwitcher } from "../components/theme-switcher"
+import { ThemeSwitcher } from "../../components/theme-switcher"
 
 export default function LandingPage() {
   const [mounted, setMounted] = useState(false)

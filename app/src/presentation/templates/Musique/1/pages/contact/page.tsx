@@ -1,8 +1,8 @@
-import { Layout } from "lucide-react";
 import HeroSection from "../../components/about.component/sections/Hero-section";
 import AddressCard from "../../components/contact.component/sections/address-card";
 import ContactForm from "../../components/contact.component/sections/contact-form";
 import MapFrame from "../../components/contact.component/sections/map-frame";
+import Layout from "../../components/layout";
 
 
 export default function Contact() {

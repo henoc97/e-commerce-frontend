@@ -1,9 +1,9 @@
 
-import { Layout } from 'lucide-react';
 import AboutSection from '../../components/about.component/sections/about-section';
 import HeroSection from '../../components/about.component/sections/Hero-section';
 import TeamSection from '../../components/about.component/sections/team-section';
 import ValuesSection from '../../components/about.component/sections/value-section';
+import Layout from '../../components/layout';
 
 
 export default function About() {

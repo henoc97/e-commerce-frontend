@@ -1,50 +1,88 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
+    darkMode: ['class'],
     content: [
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
         './components/**/*.{js,ts,jsx,tsx,mdx}',
         './app/**/*.{js,ts,jsx,tsx,mdx}',
     ],
     theme: {
-        extend: {
-            colors: {
-                background: 'var(--background)',
-                foreground: 'var(--foreground)',
-                /* pallet1 */
-                // 60
-                charcoalgrayP1: '#34495E',
-                // 30
-                salmonP1: '#FB923C',
-                brightorangeP1: '#E67E22',
-                // 10
-                mintgreenP1: '#2ECC71',
-                // Complementaries
-                lightgrayP1: '#BDC3C7',
-                brickredP1: '#C0392B',
-
-                /* pallet2 */
-                sapphireP2: '#1E3A8A',
-                turquoiseP2: '#38BDF8',
-                mintgreenP2: '#34D399',
-
-                /* pallet3 */
-                offwhiteP3: '#F9FAFB',
-                darkgrayP3: '#111827',
-                // salmonP1
-
-                /* pallet4 */
-                lightgrayP4: '#F3F4F6',
-                royalpurpleP4: '#8B5CF6',
-                bordeauxP4: '#B91C1C',
-
-                /* pallet5 */
-                bluishgray: '#6B7280',
-                // sapphireP2: '---',
-                // turquoiseP2: '---,
-            },
-        },
+    	extend: {
+    		colors: {
+    			background: 'hsl(var(--background))',
+    			foreground: 'hsl(var(--foreground))',
+    			charcoalgrayP1: '#34495E',
+    			salmonP1: '#FB923C',
+    			brightorangeP1: '#E67E22',
+    			mintgreenP1: '#2ECC71',
+    			lightgrayP1: '#BDC3C7',
+    			brickredP1: '#C0392B',
+    			sapphireP2: '#1E3A8A',
+    			turquoiseP2: '#38BDF8',
+    			mintgreenP2: '#34D399',
+    			offwhiteP3: '#F9FAFB',
+    			darkgrayP3: '#111827',
+    			lightgrayP4: '#F3F4F6',
+    			royalpurpleP4: '#8B5CF6',
+    			bordeauxP4: '#B91C1C',
+    			bluishgray: '#6B7280',
+    			card: {
+    				DEFAULT: 'hsl(var(--card))',
+    				foreground: 'hsl(var(--card-foreground))'
+    			},
+    			popover: {
+    				DEFAULT: 'hsl(var(--popover))',
+    				foreground: 'hsl(var(--popover-foreground))'
+    			},
+    			primary: {
+    				DEFAULT: 'hsl(var(--primary))',
+    				foreground: 'hsl(var(--primary-foreground))'
+    			},
+    			secondary: {
+    				DEFAULT: 'hsl(var(--secondary))',
+    				foreground: 'hsl(var(--secondary-foreground))'
+    			},
+    			muted: {
+    				DEFAULT: 'hsl(var(--muted))',
+    				foreground: 'hsl(var(--muted-foreground))'
+    			},
+    			accent: {
+    				DEFAULT: 'hsl(var(--accent))',
+    				foreground: 'hsl(var(--accent-foreground))'
+    			},
+    			destructive: {
+    				DEFAULT: 'hsl(var(--destructive))',
+    				foreground: 'hsl(var(--destructive-foreground))'
+    			},
+    			border: 'hsl(var(--border))',
+    			input: 'hsl(var(--input))',
+    			ring: 'hsl(var(--ring))',
+    			chart: {
+    				'1': 'hsl(var(--chart-1))',
+    				'2': 'hsl(var(--chart-2))',
+    				'3': 'hsl(var(--chart-3))',
+    				'4': 'hsl(var(--chart-4))',
+    				'5': 'hsl(var(--chart-5))'
+    			},
+    			sidebar: {
+    				DEFAULT: 'hsl(var(--sidebar-background))',
+    				foreground: 'hsl(var(--sidebar-foreground))',
+    				primary: 'hsl(var(--sidebar-primary))',
+    				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+    				accent: 'hsl(var(--sidebar-accent))',
+    				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+    				border: 'hsl(var(--sidebar-border))',
+    				ring: 'hsl(var(--sidebar-ring))'
+    			}
+    		},
+    		borderRadius: {
+    			lg: 'var(--radius)',
+    			md: 'calc(var(--radius) - 2px)',
+    			sm: 'calc(var(--radius) - 4px)'
+    		}
+    	}
     },
-    plugins: [],
+    plugins: [require("tailwindcss-animate")],
 };
 export default config;
